@@ -1,0 +1,4 @@
+make the Makefile not remake every time
+get rid of -g flag
+norminette
+get rid of files that aren't useful
