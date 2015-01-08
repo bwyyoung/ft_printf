@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcount.c                                      :+:      :+:    :+:   */
+/*   ft_min_umax.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:33:24 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 15:33:26 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/08 16:17:13 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/08 16:18:20 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t				ft_strcount(char const *haystack, char const needle)
+uintmax_t			ft_min_umax(uintmax_t a, uintmax_t b)
 {
-	size_t			count;
-	
-	while (haystack)
-	{
-		if (*haystack == needle)
-			count++;
-		haystack++;
-	}
-	return (count);
+	return (a > b ? b : a);
 }

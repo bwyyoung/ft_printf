@@ -6,19 +6,12 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 16:36:32 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/30 23:21:36 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/08 15:23:47 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-/*
-** A general note: while I tried to make this as
-** implementation-independant as possible, if you're going to use this
-** on other platforms, there are perhaps some definitions that you'll
-** need to change. Or, you know, use use the built-in... Just an idea!
-*/
 
 /*
 ** stdarg: unknown number of arguments
@@ -86,12 +79,16 @@ typedef struct			s_conversion
 
 int						ft_printf(const char *format_string, ...);
 void					handle_format(t_format *format, va_list arguments);
-void					parse_conversion(t_conversion *conversion, t_format *format);
+void					parse_conversion(t_conversion *conversion
+										 , t_format *format);
 void					parse_flags(t_conversion *conversion, t_format *format);
 void					parse_width(t_conversion *conversion, t_format *format);
-void					parse_precision(t_conversion *conversion, t_format *format);
-void					parse_length(t_conversion *conversion, t_format *format);
-void					parse_specifier(t_conversion *conversion, t_format *format);
+void					parse_precision(t_conversion *conversion
+										, t_format *format);
+void					parse_length(t_conversion *conversion
+									 , t_format *format);
+void					parse_specifier(t_conversion *conversion
+										, t_format *format);
 void					print_conversion(t_conversion *conversion
 										 , va_list arguments
 										 , size_t *written);

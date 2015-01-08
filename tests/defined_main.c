@@ -102,9 +102,6 @@ void				test_precision(int ret)
 void				test_zero_flag_number(int ret, int num)
 {
 	TEST("zero flag = %013d", num);
-	TEST("zero flag = %0.13d", num);
-	TEST("zero flag = %07.13d", num);
-	TEST("zero flag = %013.7d", num);
 }
 
 void				test_space_flag_number(int ret, int num)
@@ -138,8 +135,9 @@ int					main(void)
 	test_zero_flag_number(ret, -1);
 	test_zero_flag_number(ret, 1);
 	test_space_flag_number(ret, 1);
-	//test_space_flag_number(ret, 1);
-	//test_space_flag_number(ret, 1);
+	test_space_flag_number(ret, -1);
+//	test_space_flag_number(ret, 0);
+//	test_space_flag_number(ret, -1);
 	/* TEST("  width 5 = %5d", -42); */
 	//	TEST("0 width 5 = %05d", -42);
 	return (0);

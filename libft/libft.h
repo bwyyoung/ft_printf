@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 12:34:27 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/28 22:02:43 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/08 16:19:00 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int				ft_count_digits_umax(uintmax_t number);
 int				ft_abs(int number);
 intmax_t		ft_abs_max(intmax_t number);
 int				ft_min(int a, int b);
+uintmax_t		ft_min_umax(uintmax_t a, uintmax_t b);
 int				ft_max(int a, int b);
 void			ft_ptrswp(void **first, void **second);
 int				ft_ptrequ(const void *first, const void *second);

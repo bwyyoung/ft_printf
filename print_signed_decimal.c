@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 18:50:08 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/30 23:33:36 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/08 16:32:33 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static size_t		get_string_length(intmax_t value, int digits, char prefix
 	length += conversion->width;
 	length += (prefix > 0);
 	length += ft_max(conversion->precision - digits, 0);
-	return (length);
+	return ();
 }
 
 static char			*get_string(intmax_t value, t_conversion *conversion)

@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 21:00:03 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/27 16:44:51 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/08 15:23:37 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void			handle_conversion(t_format *format, va_list arguments)
 	ft_bzero(&conversion, sizeof(conversion));
 	conversion.precision = -1;
 	parse_conversion(&conversion, format);
-	//validate_conversion(&conversion);
 	print_conversion(&conversion, arguments, &format->written);
 }
 

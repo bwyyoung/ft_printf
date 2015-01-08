@@ -1,26 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcount.c                                      :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:33:24 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 15:33:26 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/08 15:24:16 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/08 15:53:13 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t				ft_strcount(char const *haystack, char const needle)
-{
-	size_t			count;
-	
-	while (haystack)
-	{
-		if (*haystack == needle)
-			count++;
-		haystack++;
-	}
-	return (count);
-}
+TEST("zero flag = %0.13d", num); '0' flag ignored with precision and %d
