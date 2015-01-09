@@ -111,6 +111,11 @@ void				test_space_flag_number(int ret, int num)
 	TEST("space flag = % 13.7d", num);
 }
 
+void				do_not_compile(int ret)
+{
+	TEST("d with z length = %zd", 8);
+}
+
 int					main(void)
 {
 	int				ret; // return value

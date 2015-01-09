@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_signed_decimal.c                             :+:      :+:    :+:   */
+/*   print_decimal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 18:50:08 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 16:32:33 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/09 11:06:30 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,26 +99,8 @@ static char			*get_string(intmax_t value, t_conversion *conversion)
 	return (string);
 }
 
-static intmax_t		get_argument(va_list arguments, t_length length)
-{
-	if (length == HH)
-		return (va_arg(arguments, int));
-	if (length == H)
-		return (va_arg(arguments, int));
-	if (length == L)
-		return (va_arg(arguments, long));
-	if (length == LL)
-		return (va_arg(arguments, long long));
-	if (length == J)
-		return (va_arg(arguments, intmax_t));
-	if (length == Z)
-		return (va_arg(arguments, size_t));
-	return (va_arg(arguments, int));
-}
-
-void				print_signed_decimal(t_conversion *conversion
-										   , va_list arguments
-										   , size_t *written)
+void				print_decimal(t_conversion *conversion, va_list arguments
+								  , size_t *written)
 {
 	char			*string;
 	intmax_t		value;
