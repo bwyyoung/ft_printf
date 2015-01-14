@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 12:34:27 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 16:19:00 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/13 15:26:40 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char			*ft_strnew(size_t size);
 void			ft_strdel(char **pointer);
 
 /*
-** character
+** get/set chars in strings
 */
 int				ft_islower(int c);
 int				ft_isupper(int c);
@@ -45,6 +45,8 @@ int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_isspace(int c);
+void			ft_strtolower(char *string);
+void			ft_strtoupper(char *string);
 
 /*
 ** string
@@ -77,6 +79,8 @@ char			*ft_strjoin(char const *first, char const *second);
 char			*ft_strtrim(char const *string);
 char			**ft_strsplit(char const *string, char c);
 void			ft_strsplit_free(char **thing);
+size_t			ft_countchars(char const *chars, char needle
+							  , size_t length);
 
 /*
 ** printing
@@ -90,7 +94,7 @@ void			ft_putcharn(char c, size_t number);
 void			ft_putcharn_fd(char c, size_t number, int file_descriptor);
 void			ft_putstr(char const *source);
 void			ft_putstr_fd(char const *source, int file_descriptor);
-void			ft_putstr_literal(char const *source);
+void			ft_putstr_literal_fd(char const *source, int file_descriptor);
 void			ft_putstr_justify_right(char *string
 										, size_t total
 										, char fill);
@@ -105,6 +109,7 @@ void			ft_putnbr_justify_right(int number
 										, size_t total
 										, char fill);
 void			ft_putnbr_fd(int number, int file_descriptor);
+void			ft_putnbr_large_fd(intmax_t number, int file_descriptor);
 void			ft_putulonglong(unsigned long long number);
 void			ft_putstrarr(char const **source, size_t length);
 void			ft_putarr(void const **source, size_t length
@@ -136,15 +141,19 @@ typedef struct	s_intarr
 
 int				ft_atoi(const char *str);
 void			ft_atoi_add_digit(const char c, int *number);
-void			ft_atoi_add_digit_max(const char c, intmax_t *number);
+void			ft_atoi_add_digit_u(const char c, unsigned int *number);
+void			ft_atoi_add_digit_large(const char c, intmax_t *number);
+void			ft_atoi_add_digit_ularge(const char c, uintmax_t *number);
 void			ft_itoa_write(char *last_digit, uintmax_t number);
 char			*ft_itoa(int number);
 char			*ft_itoa_large(intmax_t number);
-char			*ft_itoa_ularge(unsigned long long number);
+char			*ft_itoa_ularge(uintmax_t number);
+char			*ft_basetoa(uintmax_t number, int base);
 int				ft_count_digits(int number);
-int				ft_count_digits_umax(uintmax_t number);
+int				ft_count_digits_large(intmax_t number);
+int				ft_count_digits_ularge(uintmax_t number);
 int				ft_abs(int number);
-intmax_t		ft_abs_max(intmax_t number);
+intmax_t		ft_abs_large(intmax_t number);
 int				ft_min(int a, int b);
 uintmax_t		ft_min_umax(uintmax_t a, uintmax_t b);
 int				ft_max(int a, int b);

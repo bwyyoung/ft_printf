@@ -6,7 +6,7 @@
 /*   By: gdidier <gdidier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/27 12:50:14 by gdidier           #+#    #+#             */
-/*   Updated: 2014/12/26 19:15:27 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/12 18:10:27 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
  
@@ -20,8 +20,8 @@
 /* #define HAS_S */
 /* #define HAS_C */
 #define HAS_d
-/* #define HAS_D */
-/* #define HAS_i */
+#define HAS_D
+#define HAS_i
 /* #define HAS_U */
 /* #define HAS_c */
 /* #define HAS_u */
@@ -59,10 +59,10 @@ int             g = 1;
  
 int             main()
 {
-    int             i = 1;
+//    int             i = 1;
     stdout = freopen("outftprintf", "w", stdout);
     f = fopen("outprintf", "w");
-    char* l = setlocale(LC_ALL, "");
+//    char* l = setlocale(LC_ALL, "");
 
 #ifdef HAS_ERR
 
@@ -125,15 +125,15 @@ int             main()
             test_printf("%.3d\n", 2387);
             test_printf("%.3d\n", -2387);
             test_printf("%.3d\n", 0);
-            test_printf("%3*d\n", 0, 18);
-            test_printf("%3*d\n", 2, 18);
-            test_printf("%3*d\n", 3, 18);
-            test_printf("%3*d\n", 6, 18);
-            test_printf("%3*d\n", 0, -18);
-            test_printf("%3*d\n", 2, -18);
-            test_printf("%3*d\n", 6, -18);
-            test_printf("%3*d\n", 2, 2387);
-            test_printf("%2*d\n", 8, 2387);
+            test_printf("%3.*d\n", 0, 18);
+            test_printf("%3.*d\n", 2, 18);
+            test_printf("%3.*d\n", 3, 18);
+            test_printf("%3.*d\n", 6, 18);
+            test_printf("%3.*d\n", 0, -18);
+            test_printf("%3.*d\n", 2, -18);
+            test_printf("%3.*d\n", 6, -18);
+            test_printf("%3.*d\n", 2, 2387);
+            test_printf("%2.*d\n", 8, 2387);
             test_printf("%d\n", 1);
             test_printf("%d\n", 5);
             test_printf("%d\n", -5);
@@ -203,14 +203,14 @@ int             main()
             test_printf("%*d\n", 10, 0);
             test_printf("%*d\n", 10, 10);
             test_printf("%*d\n", -10, 10);
-            test_printf("%03*d\n", 0, 0);
-            test_printf("%03*d\n", 1, 10);
-            test_printf("%03*d\n", 10, 0);
-            test_printf("%03*d\n", 10, 10);
-            test_printf("%03*d\n", -10, 10);
+            test_printf("%03.*d\n", 0, 0);
+            test_printf("%03.*d\n", 1, 10);
+            test_printf("%03.*d\n", 10, 0);
+            test_printf("%03.*d\n", 10, 10);
+            test_printf("%03.*d\n", -10, 10);
             test_printf("%d\n", -18);
             test_printf("%d\n", -2387);
-             test_printf("%+03d\n", 1); 
+             test_printf("%+03d\n", 1);
             test_printf("% 03d\n", 1);
             test_printf("% 03d\n", 1);
             test_printf("%0-10d\n", 10);
@@ -218,16 +218,16 @@ int             main()
             test_printf("% d\n", 2387);
             test_printf("% d\n", -2387);
             test_printf("% d\n", 2147483647);
-             test_printf("%03*d\n", 0, 0);
-            test_printf("%03*d\n", 1, 8);
-            test_printf("%03*d\n", 10, 0);
-            test_printf("%03*d\n", 10, 8);
-            test_printf("%03*d\n", -10, 8);
-            test_printf("%03*d\n", 0, 'a');
-            test_printf("%03*d\n", 1, 'a');
-            test_printf("%03*d\n", 10, 'a');
-            test_printf("%03*d\n", 10, 'a');
-            test_printf("%03*d\n", -10, 'a');
+             test_printf("%03.*d\n", 0, 0);
+            test_printf("%03.*d\n", 1, 8);
+            test_printf("%03.*d\n", 10, 0);
+            test_printf("%03.*d\n", 10, 8);
+            test_printf("%03.*d\n", -10, 8);
+            test_printf("%03.*d\n", 0, 'a');
+            test_printf("%03.*d\n", 1, 'a');
+            test_printf("%03.*d\n", 10, 'a');
+            test_printf("%03.*d\n", 10, 'a');
+            test_printf("%03.*d\n", -10, 'a');
             test_printf("%03*.d\n", 0, 8888);
             test_printf("%03*.d\n", 1, 8888);
             test_printf("%03*.d\n", 4, 8888);
@@ -2706,15 +2706,15 @@ int             main()
             test_printf("%.3D\n", 2387);
             test_printf("%.3D\n", -2387);
             test_printf("%.3D\n", 0);
-            test_printf("%3*D\n", 0, 18);
-            test_printf("%3*D\n", 2, 18);
-            test_printf("%3*D\n", 3, 18);
-            test_printf("%3*D\n", 6, 18);
-            test_printf("%3*D\n", 0, -18);
-            test_printf("%3*D\n", 2, -18);
-            test_printf("%3*D\n", 6, -18);
-            test_printf("%3*D\n", 2, 2387);
-            test_printf("%2*D\n", 8, 2387);
+            test_printf("%3.*D\n", 0, 18);
+            test_printf("%3.*D\n", 2, 18);
+            test_printf("%3.*D\n", 3, 18);
+            test_printf("%3.*D\n", 6, 18);
+            test_printf("%3.*D\n", 0, -18);
+            test_printf("%3.*D\n", 2, -18);
+            test_printf("%3.*D\n", 6, -18);
+            test_printf("%3.*D\n", 2, 2387);
+            test_printf("%2.*D\n", 8, 2387);
             test_printf("%D\n", 1);
             test_printf("%D\n", 5);
             test_printf("%D\n", -5);

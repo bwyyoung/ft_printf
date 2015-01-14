@@ -6,14 +6,14 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 17:52:57 by tfleming          #+#    #+#              #
-#    Updated: 2015/01/08 16:19:12 by tfleming         ###   ########.fr        #
+#    Updated: 2015/01/13 15:27:00 by tfleming         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =			libft.a
 
 CC =			gcc
-FLAGS =			-Wall -Werror -Wextra #-03
+FLAGS =			-Wall -Werror -Wextra -g #-03
 
 COMPILED =		ft_islower.o \
 				ft_isupper.o \
@@ -25,6 +25,8 @@ COMPILED =		ft_islower.o \
 				ft_isascii.o \
 				ft_isprint.o \
 				ft_isspace.o \
+				ft_strtolower.o \
+				ft_strtoupper.o \
 				ft_strlen.o \
 				ft_strnlen.o \
 				ft_strchr.o \
@@ -48,7 +50,9 @@ COMPILED =		ft_islower.o \
 				ft_bzero.o \
 				ft_atoi.o \
 				ft_atoi_add_digit.o \
-				ft_atoi_add_digit_max.o \
+				ft_atoi_add_digit_u.o \
+				ft_atoi_add_digit_large.o \
+				ft_atoi_add_digit_ularge.o \
 				ft_memalloc.o \
 				ft_memdel.o \
 				ft_strnew.o \
@@ -65,32 +69,35 @@ COMPILED =		ft_islower.o \
 				ft_strtrim.o \
 				ft_strsplit.o \
 				ft_strsplit_free.o \
+				ft_countchars.o \
 				ft_itoa.o \
-				ft_itoa_write.o \
 				ft_itoa_large.o \
 				ft_itoa_ularge.o \
+				ft_itoa_write.o \
+				ft_basetoa.o \
 				ft_count_digits.o \
-				ft_count_digits_umax.o \
+				ft_count_digits_ularge.o \
 				ft_putchar.o \
 				ft_putcharn.o \
 				ft_putcharn_fd.o \
 				ft_putstr.o \
+				ft_putstr_literal_fd.o \
 				ft_putstr_justify_right.o \
 				ft_putstrn.o \
 				ft_putendl_exit.o \
 				ft_putendl.o \
 				ft_putnbr.o \
 				ft_putnbr_justify_right.o \
-				ft_putulonglong.o \
 				ft_putchar_fd.o \
 				ft_putstr_fd.o \
 				ft_putstrn_fd.o \
 				ft_putendl_fd.o \
 				ft_putnbr_fd.o \
+				ft_putnbr_large_fd.o \
 				ft_putstrarr.o \
 				ft_putarr.o \
 				ft_abs.o \
-				ft_abs_max.o \
+				ft_abs_large.o \
 				get_next_line.o \
 				ft_arrlen.o \
 				ft_list_create_elem.o \

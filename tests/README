@@ -1,0 +1,9 @@
+Hi! I made some tests for you!
+
+To run the testing suite, execute "sh run.sh".
+
+Honestly, the whole thing is just a bash file and a main, so it shouldn't be toooo hard to figure out, esspecially given you're at 42. Seriously, go look at the main.c and run.sh...
+
+Anyways, it might be handy for debugging to comment out some of the lines in run.sh, such as the rm lines near the end. This will allow you to compare the output of your program with the output of the original. These outputs will be saved into your very own, handy dandy files called "mine" and "theirs".
+
+Have fun!!!

@@ -6,7 +6,7 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/26 19:03:08 by tfleming          #+#    #+#              #
-#    Updated: 2014/12/28 18:15:10 by tfleming         ###   ########.fr        #
+#    Updated: 2015/01/13 14:12:55 by tfleming         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,10 +24,18 @@ COMPILED =		ft_printf.o \
 				parse_precision.o \
 				parse_length.o \
 				parse_specifier.o \
+				validate_conversion.o \
+				validate_flags.o \
 				print_conversion.o \
-				print_signed_decimal.o \
 				print_format_error.o \
-				get_current.o
+				get_current.o \
+				get_number_argument.o \
+				get_unsigned_number_argument.o \
+				get_string_decimal.o \
+				get_string_string.o \
+				get_string_pointer.o \
+				get_string_octal.o \
+				get_string_hex.o
 
 all: $(NAME)
 

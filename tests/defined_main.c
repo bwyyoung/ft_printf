@@ -3,8 +3,6 @@
 #include "../ft_printf.h"
 #include <stdio.h>
 
-
-
 #define TEST(format, ...)						\
 	PRINTF_TEST("format = |");					\
 	if (IMMEDIATE_PRINTING)						\
@@ -55,22 +53,13 @@ void				test_d(int ret)
 	TEST("minus fourty two = %d", -42);
 	TEST("int min + 1 = %d", INT_MIN + 1);
 	TEST("int min = %d", INT_MIN);
-	TEST("long max = %lld", LLONG_MAX);
-}
-
-void				test_i(int ret)
-{
-	TEST("three = %i", 3);
-	TEST("four = %i", 4);
-	TEST("zero = %i", 0);
-	TEST("fourty two = %i", 42);
-	TEST("int max - 1 = %i", INT_MAX - 1);
-	TEST("int max = %i", INT_MAX);
-	TEST("minus one = %i", -1);
-	TEST("minus three = %i", -3);
-	TEST("minus fourty two = %i", -42);
-	TEST("int min + 1 = %i", INT_MIN + 1);
-	TEST("int min = %i", INT_MIN);
+	TEST("int max = %d", INT_MAX);
+	TEST("int min - 1 = %ld", ((long)INT_MIN) - 1);
+	/* TEST("long min = %ld", LONG_MIN); */
+	/* TEST("long min + 1 = %ld", LONG_MIN + 1); */
+	/* TEST("long max - 1 = %ld", LONG_MAX - INT_MAX); */
+	/* TEST("long max = %ld", LONG_MAX); */
+	/* TEST("long long max = %lld", LLONG_MAX); */
 }
 
 void				test_precision_number(int ret, int num)
@@ -113,6 +102,11 @@ void				test_space_flag_number(int ret, int num)
 	TEST("space flag = % 13.7d", num);
 }
 
+void				do_not_compile(int ret)
+{
+	TEST("d with z length = %zd", (size_t)8);
+}
+
 int					main(void)
 {
 	int				ret; // return value
@@ -125,8 +119,9 @@ int					main(void)
 	TEST("This is the second test.");
 	TEST("%d", 18);
 	TEST("%+d", 18);
+	TEST("% d", 18);
+	TEST("%ld", ((long)INT_MAX) + 2);
 	test_d(ret);
-	test_i(ret);
 	test_width(ret);
 	test_precision(ret);
 	test_zero_flag_number(ret, 42);
@@ -136,9 +131,24 @@ int					main(void)
 	test_zero_flag_number(ret, 1);
 	test_space_flag_number(ret, 1);
 	test_space_flag_number(ret, -1);
-//	test_space_flag_number(ret, 0);
-//	test_space_flag_number(ret, -1);
-	/* TEST("  width 5 = %5d", -42); */
-	//	TEST("0 width 5 = %05d", -42);
+	test_space_flag_number(ret, 0);
+	test_space_flag_number(ret, -1);
+	TEST("%3.*i\n", 0, 18);
+	TEST("%s", "abc");
+
+	/* TEST("%.*d", -1, 3); */
+	/* TEST("%.*d", -5, 0); causes errors printed by mine*/
+	/* TEST("%.*d", -5, 1); */
+	TEST("%.d", 1);
+	TEST("%.d", 0);
+	TEST("%.0d", 1);
+	TEST("%.0d", 0);
+	TEST("%lo, %lo", (unsigned long)0, ULONG_MAX);
+	
+	/* TEST("%u", UINT_MAX - 1); */
+	/* TEST("%u", UINT_MAX); */
+	/* TEST("%x", 42); */
+	/* TEST("%x, %x", 0, UINT_MAX); */
+	TEST("%llO", USHRT_MAX);
 	return (0);
 }

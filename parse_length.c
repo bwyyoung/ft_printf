@@ -18,24 +18,25 @@ t_length			get_length(char current, char next)
 		return (next == 'h' ? HH : H);
 	if (current == 'l')
 		return (next == 'l' ? LL : L);
-	if (current == 'J')
+	if (current == 'j')
 		return (J);
-	if (current == 'Z')
+	if (current == 'z')
 		return (Z);
 	return (DEFAULT_LENGTH);
 }
 
-void				parse_length(t_conversion *conversion, t_format *format)
+int					parse_length(t_conversion *conversion, t_format *format)
 {
 	char			current;
 	char			next;
 	
 	if (!((current = *get_current(format)))
 			|| !((next = *(get_current(format) + 1))))
-		return ;
+		return (OKAY);
 	conversion->length = get_length(current, next);
 	if (conversion->length != DEFAULT_LENGTH)
 		format->location++;
 	if (conversion->length == HH || conversion->length == LL)
 		format->location++;
+	return (OKAY);
 }

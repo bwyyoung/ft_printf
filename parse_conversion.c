@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 16:38:36 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/28 18:15:35 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/13 13:15:05 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 ** %[flags][width][.precision][length]specifier
 */
 
-void				parse_conversion(t_conversion *conversion, t_format *format)
+int					parse_conversion(t_conversion *conversion
+									 , va_list arguments
+									 , t_format *format)
 {
-	parse_flags(conversion, format);
-	parse_width(conversion, format);
-	if (*get_current(format) == '.')
-	{
-		format->location++;
-		parse_precision(conversion, format);
-	}
-	parse_length(conversion, format);
-	parse_specifier(conversion, format);
+	if (parse_flags(conversion, format) == OKAY
+		&& parse_width(conversion, arguments, format) == OKAY
+		&& parse_precision(conversion, arguments, format) == OKAY
+		&& parse_length(conversion, format) == OKAY
+		&& parse_specifier(conversion, format) == OKAY)
+		return (OKAY);
+	return (ERROR);
 }

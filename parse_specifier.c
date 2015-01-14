@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 19:48:22 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/28 18:22:51 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/13 13:17:23 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,38 @@
 ** p		pointer
 */
 
-static void			reached_end_while_parsing(t_format *format)
+static int			reached_end_while_parsing(t_format *format)
 {
 	if (*(format->string - 1) == '%')
 		ft_putstr_fd("ft_printf: spurious trailing ‘%’ in format\n", 2);
 	else
 		ft_putstr_fd("ft_printf: conversion lacks type at end of format\n", 2);
 	print_format_error(format);
-	exit(1);
+	return (1);
 }
 
-static void			invalid_specifier(char c, t_format *format)
+static int			invalid_specifier(char c, t_format *format)
 {
-	ft_putstr_fd("unknown conversion type character '", 2);
+	ft_putstr_fd("ft_printf: unknown conversion type character '", 2);
 	ft_putchar_fd(c, 2);
 	ft_putstr_fd("’ in format\n", 2);
 	print_format_error(format);
-	exit(1);
+	return (1);
+}
+
+static int			mixed_masquerading_and_length(t_length length, char c
+												  , t_format *format)
+{
+	ft_putstr_fd("ft_printf: use of ‘", 2);
+	if (length == HH || length == LL)
+		ft_putstrn_fd(get_current(format) - 2, 2, 2);
+	else
+		ft_putstrn_fd(get_current(format) - 1, 1, 2);
+	ft_putstr_fd("’ length modifier with ‘", 2);
+	ft_putchar_fd(c, 2);
+	ft_putstr_fd("’ type character\n", 2);
+	print_format_error(format);
+	return (1);
 }
 
 static t_specifier	get_specifier(char c)
@@ -68,36 +83,24 @@ static t_specifier	get_specifier(char c)
 	return (INVALID_SPECIFIER);
 }
 
-void				mixed_masquerading_and_length(t_length length, char c
-												  , t_format *format)
-{
-	ft_putstr_fd("ft_printf: use of ‘", 2);
-	if (length == HH || length == LL)
-		ft_putstrn_fd(get_current(format) - 2, 2, 2);
-	else
-		ft_putstrn_fd(get_current(format) - 1, 1, 2);
-	ft_putstr_fd("’ length modifier with ‘", 2);
-	ft_putchar_fd(c, 2);
-	ft_putstr_fd("’ type character\n", 2);
-	print_format_error(format);
-}
-
-void				parse_specifier(t_conversion *conversion
+int					parse_specifier(t_conversion *conversion
 									, t_format *format)
 {
 	char			current;
 	
 	if (!((current = *get_current(format))))
-		reached_end_while_parsing(format);
+		return (reached_end_while_parsing(format));
 	conversion->specifier = get_specifier(current);
 	if (conversion->specifier == INVALID_SPECIFIER)
-		invalid_specifier(current, format);
+		return (invalid_specifier(current, format));
 	if (current == 'D' || current == 'U' || current == 'O'
 		|| current == 'C' || current == 'S')
 	{
 		if (conversion->length != DEFAULT_LENGTH)
-			mixed_masquerading_and_length(conversion->length, current, format);
+			return (mixed_masquerading_and_length(conversion->length
+												  , current, format));
 		conversion->length = L;
 	}
 	format->location++;
+	return (0);
 }

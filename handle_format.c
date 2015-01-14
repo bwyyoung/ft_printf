@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 21:00:03 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 15:23:37 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/13 13:46:42 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,15 @@ static void			handle_conversion(t_format *format, va_list arguments)
 	if (check_percent_percent(format))
 		return ;
 	ft_bzero(&conversion, sizeof(conversion));
-	conversion.precision = -1;
-	parse_conversion(&conversion, format);
-	print_conversion(&conversion, arguments, &format->written);
+	if (parse_conversion(&conversion, arguments, format) == OKAY
+		&& validate_conversion(&conversion, format) == OKAY)
+		print_conversion(&conversion, arguments, &format->written);
+	else if (*get_current(format) == '%')
+	{
+		ft_putchar('%');
+		format->location++;
+		format->written++;
+	}
 }
 
 void				handle_format(t_format *format, va_list arguments)

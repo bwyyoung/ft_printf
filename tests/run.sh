@@ -12,7 +12,8 @@ rm -r "tester_mine.dSYM"
 # testing program name; definition file
 compile_with_define () {
     cat $2 main.c > defined_main.c
-    gcc -g -Wall -Werror -Wextra -o $1 ../libftprintf.a defined_main.c
+    # -Wall -Werror -Wextra
+    gcc -g  -o $1 ../libftprintf.a defined_main.c
     if [ ! -f $1 ]; then
 	echo "FAILED COMPILATION: " $1
 	exit

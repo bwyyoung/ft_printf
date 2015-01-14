@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_add_digit_max.c                            :+:      :+:    :+:   */
+/*   get_string_string.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:25:00 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 15:25:01 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/11 19:49:28 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/13 14:00:42 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-/*
-** adds a single digit to a number;  be used in atoi implementations
-*/
-
-void				ft_atoi_add_digit_max(const char c, intmax_t *number)
+char				*get_string_string(t_conversion *conversion
+									   , va_list arguments)
 {
-	if (*number)
-		*number *= 10;
-	*number += c - '0';
+	char			*string;
+
+	if (!(string = va_arg(arguments, char*)))
+		return (ft_strdup("(null)"));
+	string = ft_strdup(string);
+	(void)conversion;
+	return (string);
 }

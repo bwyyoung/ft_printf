@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_decimal.c                                   :+:      :+:    :+:   */
+/*   ft_abs_large.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 11:13:39 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/09 11:26:46 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/08 15:24:39 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/11 20:24:40 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void				handle_decimal(t_conversion conversion
-								   , va_list arguments
-								   , size_t *written)
+intmax_t			ft_abs_large(intmax_t number)
 {
-	intmax_t		value;
-
-	
+	if (number < 0)
+		return (-number);
+	return (number);
 }

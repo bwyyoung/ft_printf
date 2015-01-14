@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_ularge.c                                   :+:      :+:    :+:   */
+/*   ft_countchars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/28 21:04:27 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/11 20:21:32 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/12 14:20:55 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/12 14:23:10 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		write_chars(char *first, char *now, uintmax_t number)
+size_t				ft_countchars(char const *haystack, char needle
+								  , size_t length)
 {
-	while (now >= first)
+	size_t			count;
+	size_t			i;
+
+	count = 0;
+	i = 0;
+	while (i < length)
 	{
-		*now = number % 10 + '0';
-		number /= 10;
-		now--;
+		if (haystack[i] == needle)
+			count++;
+		i++;
 	}
-}
-
-char			*ft_itoa_ularge(uintmax_t number)
-{
-	char	*new;
-	int		length;
-
-	if (number == 0)
-		return (ft_strdup("0"));
-	length = ft_count_digits_ularge(number);
-	new = malloc(sizeof(char) * (length + 1));
-	write_chars(new, new + length - 1, number);
-	new[length] = '\0';
-	return (new);
+	return (count);
 }

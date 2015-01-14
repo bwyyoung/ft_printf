@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:24:16 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/08 15:53:13 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/13 16:09:41 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/13 16:39:09 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+// don't foget to delete this
 
-static void			break_it_up(void)
-{
-	ft_putstr("\n\n");
-}
+#include "libft.h"
+#include <stdio.h>
 
 int					main(void)
 {
-	ft_putendl("'0' flag ignored with precision and %d");
-	ft_printf("%0.13d", 42);
-	break_it_up();
+	printf("ft_itoa_large(((long)INT_MAX) + 1) = %s\n"
+		   , ft_itoa_large(((long)INT_MAX) + 1));
+	printf("ft_itoa_large(((long)INT_MAX) + 1) = %ld\n", ((long)INT_MAX) + 1);
+	
+	/* int				sup; */
+	/* long			value; */
 
-	ft_putendl("use  length modifier with 'O' type character 'O'");
-
-
-	TEST("%+ d", 42);
-	TEST("%hp", NULL);
-		/* TEST("%+u", 0); */
-	/* TEST("%0c", 0); */
-	/* TEST("%0s", "asdf"); */
-	/* TEST("%0p", NULL); */
-	TEST("%.4c", 'c');
-	TEST("%.4p", NULL);
+	/* (void)sup; */
+	/* value = (long)&sup; */
+	/* printf("mine  : %s\n", ft_basetoa(value, 16)); */
+	/* printf("theirs: %lX\n", value); */
 	return (0);
-}						 
+}
