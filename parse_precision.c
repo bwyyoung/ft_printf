@@ -51,6 +51,7 @@ int					written_numbers(t_conversion *conversion, t_format *format)
 		i++;
 	}
 	format->location += i;
+	conversion->precision_set = 1;
 	return (OKAY);		
 }
 
@@ -64,7 +65,6 @@ int					parse_precision(t_conversion *conversion
 			from_star(conversion, arguments, format);
 		else
 			written_numbers(conversion, format);
-		conversion->precision_set = 1;
 	}
 	return (OKAY);
 }

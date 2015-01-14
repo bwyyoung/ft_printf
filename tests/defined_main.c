@@ -149,6 +149,9 @@ int					main(void)
 	/* TEST("%u", UINT_MAX); */
 	/* TEST("%x", 42); */
 	/* TEST("%x, %x", 0, UINT_MAX); */
-	TEST("%llO", USHRT_MAX);
+	//TEST("%llO", USHRT_MAX);
+	//TEST("{%-15Z}", 123);
+	TEST("%.*d", -5, 0);
+	TEST("%ll# 2.3hd", 356565655);
 	return (0);
 }

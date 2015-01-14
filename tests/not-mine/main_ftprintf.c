@@ -17,27 +17,27 @@
 #include <unistd.h>
 #include <locale.h>
 
-/* #define HAS_S */
+#define HAS_S
 /* #define HAS_C */
 #define HAS_d
 #define HAS_D
 #define HAS_i
-/* #define HAS_U */
-/* #define HAS_c */
-/* #define HAS_u */
-/* #define HAS */
-/* #define HAS_x */
-/* #define HAS_X */
-/* #define HAS_O */
-/* #define FLAG_H */
-/* #define FLAG_HH */
-/* #define FLAG_L */
-/* #define FLAG_LL */
-/* #define FLAG_J */
-/* #define FLAG_Z */
-/* #define HAS_o */
-/* #define HAS_p */
-/* #define HAS_ERR */
+#define HAS_U
+//#define HAS_c
+#define HAS_u
+#define HAS
+#define HAS_x
+#define HAS_X
+#define HAS_O
+#define FLAG_H
+#define FLAG_HH
+#define FLAG_L
+#define FLAG_LL
+#define FLAG_J
+#define FLAG_Z
+#define HAS_o
+#define HAS_p
+#define HAS_ERR
 
 FILE *f = NULL;
 int             kprintf(char *format, ...)
@@ -59,10 +59,10 @@ int             g = 1;
  
 int             main()
 {
-//    int             i = 1;
+    int             i = 1;
     stdout = freopen("outftprintf", "w", stdout);
     f = fopen("outprintf", "w");
-//    char* l = setlocale(LC_ALL, "");
+    char* l = setlocale(LC_ALL, "");
 
 #ifdef HAS_ERR
 

@@ -79,6 +79,5 @@ char				*ft_basetoa(uintmax_t number, int base)
 	length = count_digits(number, base);
 	new = ft_strnew(length);
 	write_chars(new + length - 1, base, conversion, number);
-	ft_putendl_fd(new, 2);
 	return (new);
 }
