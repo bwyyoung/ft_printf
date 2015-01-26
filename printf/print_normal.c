@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_conversion.c                                 :+:      :+:    :+:   */
+/*   print_normal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/26 23:03:06 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/13 14:13:28 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/26 19:10:53 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/26 19:41:42 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,31 @@
 ** but in my opinion it is the most understandable.
 */
 
+static void			final_padding(t_conversion *conversion
+										  , char **string)
+{
+	char			*new;
+	char			*padding;
+	intmax_t		needed;
+
+	needed = conversion->width - ft_strlen(*string);
+	if (needed > 0)
+	{
+		padding = ft_strnew(needed);
+		ft_memset(padding, ' ', needed);
+		if (conversion->flags.left_justify)
+			new = ft_strjoin(*string, padding);
+		else
+			new = ft_strjoin(padding, *string);
+		free(*string);
+		free(padding);
+		*string = new;
+	}
+}
+
 static t_get_string	get_string_getter(t_specifier specifier)
 {
-	if (specifier == S_DECIMAL || specifier == U_DECIMAL)
-		return (get_string_decimal);
-	else if (specifier == STRING)
+	if (specifier == STRING)
 		return (get_string_string);
 	else if (specifier == POINTER)
 		return (get_string_pointer);
@@ -29,10 +49,19 @@ static t_get_string	get_string_getter(t_specifier specifier)
 		return (get_string_octal);
 	else if (specifier == HEX_UPPER || specifier == HEX_LOWER)
 		return (get_string_hex);
-	return (NULL);
+	else if (specifier == CHAR)
+		return (get_string_char);
+	return (get_string_decimal);
 }
 
-static void			print_normal(t_conversion *conversion
+static size_t		written_particulars(t_conversion *conversion, char *string)
+{
+	if (conversion->specifier == CHAR && string[0] == '\0')
+		return (1);
+	return (0);
+}
+
+void				print_normal(t_conversion *conversion
 								 , va_list arguments
 								 , size_t *written)
 {
@@ -40,32 +69,9 @@ static void			print_normal(t_conversion *conversion
 	t_get_string	getter;
 
 	getter = get_string_getter(conversion->specifier);
-	if (getter) // not necessary
-		string = getter(conversion, arguments);
-	else
-		string = ft_strdup("[NOT_HANDLED_YET]");
+	string = getter(conversion, arguments);
+	final_padding(conversion, &string);
 	ft_putstr(string);
-	*written += ft_strlen(string);
+	*written += ft_strlen(string) + written_particulars(conversion, string);
 	free(string);
-}
-
-static void			print_wide(t_conversion *conversion
-									   , va_list arguments
-									   , size_t *written)
-{
-	ft_putstr("[WIDE_STRING_OR_CHAR]");
-	(void)conversion;
-	(void)arguments;
-	(void)written;
-}
-
-void				print_conversion(t_conversion *conversion
-											, va_list arguments
-											, size_t *written)
-{
-	if ((conversion->specifier == STRING || conversion->specifier == CHAR)
-		&& conversion->length >= L)
-		print_wide(conversion, arguments, written);
-	else
-		print_normal(conversion, arguments, written);
 }

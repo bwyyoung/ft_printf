@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putulonglong.c                                  :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/19 16:18:22 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/19 16:30:11 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/26 19:01:58 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/26 19:04:35 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void				ft_putulonglong(unsigned long long number)
-{
-	if (number > 9)
-		ft_putulonglong(number / 10);
-	ft_putchar(number % 10 + '0');
-}
+void				print_char(

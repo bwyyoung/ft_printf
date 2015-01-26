@@ -105,15 +105,9 @@ void				do_not_compile(int ret)
 	TEST("d with z length = %zd", (size_t)8);
 }
 
-int					main(void)
+void				tests(int ret)
 {
-	int				ret; // return value
-
-	if (IMMEDIATE_PRINTING)
-		ft_putstr("mine is first\n");
-	else
-		printf("theirs is second\n");
-	TEST("Hello World!");
+		TEST("Hello World!");
 	TEST("This is the second test.");
 	TEST("%d", 18);
 	TEST("%+d", 18);
@@ -149,7 +143,31 @@ int					main(void)
 	/* TEST("%x, %x", 0, UINT_MAX); */
 	//TEST("%llO", USHRT_MAX);
 	//TEST("{%-15Z}", 123);
-	TEST("%.*d", -5, 0);
-	TEST("%ll# 2.3hd", 356565655);
+	//	TEST("%.*d", -5, 0);
+	//	TEST("%ll# 2.3hd", 356565655);
+}
+
+int					main(void)
+{
+	int				ret; // return value
+
+	if (IMMEDIATE_PRINTING)
+		ft_putstr("mine is first\n");
+	else
+		printf("theirs is second\n");
+	ret = 0;
+	tests(ret);
+
+	/*
+	** add stuff here
+	*/
+	/* TEST("%s", "woohoo!"); */
+	/* TEST("%10Z", "asdf"); */
+	/* TEST("%s", "whatever"); */
+	/* TEST("%", "asdf"); */
+	/* TEST("%05. hello", "asdf"); */
+	/* TEST("%lD", LONG_MAX); */
+	TEST("%llO", USHRT_MAX);
+	
 	return (0);
 }

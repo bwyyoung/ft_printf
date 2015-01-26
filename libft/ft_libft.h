@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 12:34:27 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/26 17:56:32 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/26 17:37:39 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void			ft_memdel(void **pointer);
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **pointer);
 
+
 /*
 ** get/set chars in strings
 */
@@ -56,7 +57,7 @@ size_t			ft_strlen(const char *source);
 size_t			ft_strlen_wide(const wchar_t *source);
 size_t			ft_strnlen(const char *source, size_t max);
 char			*ft_strchr(const char *haystack, int needle);
-char			*ft_strrchr(const char *haystack, int needle);
+char			*ft_strchr_last(const char *haystack, int needle);
 int				ft_strcmp(const char *first, const char *second);
 int				ft_strequ(const char *first, const char *second);
 int				ft_strnequ(const char *first, const char *second, size_t len);
@@ -78,6 +79,7 @@ char			*ft_strmapi(const char *string
 							, char (*func)(unsigned int, char));
 char			*ft_strsub(char const *string, size_t start, size_t len);
 char			*ft_strjoin(char const *first, char const *second);
+char			*ft_strjoinn(size_t num_strings, void (*free_str)(), ...);
 char			*ft_strtrim(char const *string);
 char			**ft_strsplit(char const *string, char c);
 void			ft_strsplit_free(char **thing);
@@ -163,25 +165,6 @@ void			ft_ptrswp(void **first, void **second);
 int				ft_ptrequ(const void *first, const void *second);
 
 /*
-** get_next_line
-*/
-
-# define BUF_SIZE							1
-# define SPILL_MULT							2
-# define MAX_FD								100
-
-typedef struct	s_stock
-{
-	char	*spill;
-	long	length;
-	long	lu;
-	int		read_ret;
-	char	*line_end;
-}				t_stock;
-
-int				get_next_line(int fd, char **line);
-
-/*
 ** linked lists
 */
 
@@ -209,8 +192,30 @@ void			ft_list_push_front(t_list **begin_list, void *data);
 t_list			*ft_list_push_params(int ac, char **av);
 void			ft_list_remove_if(t_list **begin_list, void *data_ref
 									, int (*cmp)());
+void			ft_list_remove_node(t_list **original
+									, t_list *to_remove
+									, void (*free_inside)(void*));
 void			ft_list_reverse(t_list **begin_list);
 size_t			ft_list_size(t_list *begin_list);
 void			ft_list_sort(t_list **first, int (*compare)(void*, void*));
+
+/*
+** get_next_line
+*/
+
+# define BUF_SIZE		1
+# define SPILL_MULT		2
+# define MAX_FD			1000
+
+typedef struct		s_stock
+{
+	char			*spill;
+	long			length;
+	long			lu;
+	int				read_ret;
+	char			*line_end;
+}					t_stock;
+
+int					get_next_line(int fd, char **line);
 
 #endif

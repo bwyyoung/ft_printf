@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 11:13:39 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/12 16:02:36 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/26 19:41:17 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,6 @@ static void			padding_after_prefix(t_conversion *conversion
 	}
 }
 
-static void			final_padding(t_conversion *conversion
-										  , char **string)
-{
-	char			*new;
-	char			*padding;
-	intmax_t		needed;
-
-	needed = conversion->width - ft_strlen(*string);
-	if (needed > 0)
-	{
-		padding = ft_strnew(needed);
-		ft_memset(padding, ' ', needed);
-		if (conversion->flags.left_justify)
-			new = ft_strjoin(*string, padding);
-		else
-			new = ft_strjoin(padding, *string);
-		free(*string);
-		free(padding);
-		*string = new;
-	}
-}
-
 char				*get_string_decimal(t_conversion *conversion
 								   , va_list arguments)
 {
@@ -101,6 +79,5 @@ char				*get_string_decimal(t_conversion *conversion
 		string = ft_itoa_ularge(unsigned_value);
 	add_prefix(conversion, &string);
 	padding_after_prefix(conversion, &string);
-	final_padding(conversion, &string);
 	return (string);
 }

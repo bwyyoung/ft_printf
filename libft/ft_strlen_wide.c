@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen_wide.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 11:42:49 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/07 11:46:34 by tfleming         ###   ########.fr       */
+/*   Created: 2015/01/19 17:35:27 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/19 17:38:29 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strrchr(const char *haystack, int needle)
+size_t				ft_strlen_wide(const wchar_t *original)
 {
-	char	*end;
+	const wchar_t	*end;
 
-	end = ft_strchr(haystack, '\0');
-	while (haystack < end && *end != needle)
-		end--;
-	if (*end == needle)
-		return ((char*)end);
-	return (NULL);
+	end = original;
+	while (*end != L'\0')
+		end++;
+	return (end - original);
 }

@@ -1,4 +1,7 @@
-make the Makefile not remake every time
 get rid of -g flag
 norminette
 get rid of files that aren't useful
+check for (void)
+
+
+I basically need to restructure this so that it stops printing after the other stuff. Gah. printf("%3c", 0)

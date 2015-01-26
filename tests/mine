@@ -1,0 +1,199 @@
+mine is first
+format = |Hello World!|::|Hello World!| ret = 12
+format = |This is the second test.|::|This is the second test.| ret = 24
+format = |%d|::|18| ret = 2
+format = |%+d|::|+18| ret = 3
+format = |% d|::| 18| ret = 3
+format = |%ld|::|2147483649| ret = 10
+format = |three = %d|::|three = 3| ret = 9
+format = |four = %d|::|four = 4| ret = 8
+format = |zero = %d|::|zero = 0| ret = 8
+format = |fourty two = %d|::|fourty two = 42| ret = 15
+format = |int max - 1 = %d|::|int max - 1 = 2147483646| ret = 24
+format = |int max = %d|::|int max = 2147483647| ret = 20
+format = |minus one = %d|::|minus one = -1| ret = 14
+format = |minus three = %d|::|minus three = -3| ret = 16
+format = |minus fourty two = %d|::|minus fourty two = -42| ret = 22
+format = |int min + 1 = %d|::|int min + 1 = -2147483647| ret = 25
+format = |int min = %d|::|int min = -2147483648| ret = 21
+format = |int max = %d|::|int max = 2147483647| ret = 20
+format = |int min - 1 = %ld|::|int min - 1 = -2147483649| ret = 25
+format = |width = %1d|::|width = 0| ret = 9
+format = |width = %2d|::|width =  0| ret = 10
+format = |width = %3d|::|width =   0| ret = 11
+format = |width = %4d|::|width =    0| ret = 12
+format = |width = %7d|::|width =       0| ret = 15
+format = |width = %10d|::|width =          0| ret = 18
+format = |width = %78d|::|width =                                                                              0| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  0| ret = 1242
+format = |width = %1d|::|width = 1| ret = 9
+format = |width = %2d|::|width =  1| ret = 10
+format = |width = %3d|::|width =   1| ret = 11
+format = |width = %4d|::|width =    1| ret = 12
+format = |width = %7d|::|width =       1| ret = 15
+format = |width = %10d|::|width =          1| ret = 18
+format = |width = %78d|::|width =                                                                              1| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  1| ret = 1242
+format = |width = %1d|::|width = -1| ret = 10
+format = |width = %2d|::|width = -1| ret = 10
+format = |width = %3d|::|width =  -1| ret = 11
+format = |width = %4d|::|width =   -1| ret = 12
+format = |width = %7d|::|width =      -1| ret = 15
+format = |width = %10d|::|width =         -1| ret = 18
+format = |width = %78d|::|width =                                                                             -1| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 -1| ret = 1242
+format = |width = %1d|::|width = 2| ret = 9
+format = |width = %2d|::|width =  2| ret = 10
+format = |width = %3d|::|width =   2| ret = 11
+format = |width = %4d|::|width =    2| ret = 12
+format = |width = %7d|::|width =       2| ret = 15
+format = |width = %10d|::|width =          2| ret = 18
+format = |width = %78d|::|width =                                                                              2| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  2| ret = 1242
+format = |width = %1d|::|width = -2| ret = 10
+format = |width = %2d|::|width = -2| ret = 10
+format = |width = %3d|::|width =  -2| ret = 11
+format = |width = %4d|::|width =   -2| ret = 12
+format = |width = %7d|::|width =      -2| ret = 15
+format = |width = %10d|::|width =         -2| ret = 18
+format = |width = %78d|::|width =                                                                             -2| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 -2| ret = 1242
+format = |width = %1d|::|width = 42| ret = 10
+format = |width = %2d|::|width = 42| ret = 10
+format = |width = %3d|::|width =  42| ret = 11
+format = |width = %4d|::|width =   42| ret = 12
+format = |width = %7d|::|width =      42| ret = 15
+format = |width = %10d|::|width =         42| ret = 18
+format = |width = %78d|::|width =                                                                             42| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 42| ret = 1242
+format = |width = %1d|::|width = 42| ret = 10
+format = |width = %2d|::|width = 42| ret = 10
+format = |width = %3d|::|width =  42| ret = 11
+format = |width = %4d|::|width =   42| ret = 12
+format = |width = %7d|::|width =      42| ret = 15
+format = |width = %10d|::|width =         42| ret = 18
+format = |width = %78d|::|width =                                                                             42| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 42| ret = 1242
+format = |width = %1d|::|width = 123| ret = 11
+format = |width = %2d|::|width = 123| ret = 11
+format = |width = %3d|::|width = 123| ret = 11
+format = |width = %4d|::|width =  123| ret = 12
+format = |width = %7d|::|width =     123| ret = 15
+format = |width = %10d|::|width =        123| ret = 18
+format = |width = %78d|::|width =                                                                            123| ret = 86
+format = |width = %1234d|::|width =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                123| ret = 1242
+format = |precision = %.d|::|precision = 1| ret = 13
+format = |precision = %.0d|::|precision = 1| ret = 13
+format = |precision = %.1d|::|precision = 1| ret = 13
+format = |precision = %.2d|::|precision = 01| ret = 14
+format = |precision = %.3d|::|precision = 001| ret = 15
+format = |precision = %.4d|::|precision = 0001| ret = 16
+format = |precision = %.5d|::|precision = 00001| ret = 17
+format = |precision = %.7d|::|precision = 0000001| ret = 19
+format = |precision = %.10d|::|precision = 0000000001| ret = 22
+format = |precision = %.17d|::|precision = 00000000000000001| ret = 29
+format = |precision = %.d|::|precision = 3| ret = 13
+format = |precision = %.0d|::|precision = 3| ret = 13
+format = |precision = %.1d|::|precision = 3| ret = 13
+format = |precision = %.2d|::|precision = 03| ret = 14
+format = |precision = %.3d|::|precision = 003| ret = 15
+format = |precision = %.4d|::|precision = 0003| ret = 16
+format = |precision = %.5d|::|precision = 00003| ret = 17
+format = |precision = %.7d|::|precision = 0000003| ret = 19
+format = |precision = %.10d|::|precision = 0000000003| ret = 22
+format = |precision = %.17d|::|precision = 00000000000000003| ret = 29
+format = |precision = %.d|::|precision = 10| ret = 14
+format = |precision = %.0d|::|precision = 10| ret = 14
+format = |precision = %.1d|::|precision = 10| ret = 14
+format = |precision = %.2d|::|precision = 10| ret = 14
+format = |precision = %.3d|::|precision = 010| ret = 15
+format = |precision = %.4d|::|precision = 0010| ret = 16
+format = |precision = %.5d|::|precision = 00010| ret = 17
+format = |precision = %.7d|::|precision = 0000010| ret = 19
+format = |precision = %.10d|::|precision = 0000000010| ret = 22
+format = |precision = %.17d|::|precision = 00000000000000010| ret = 29
+format = |precision = %.d|::|precision = 40| ret = 14
+format = |precision = %.0d|::|precision = 40| ret = 14
+format = |precision = %.1d|::|precision = 40| ret = 14
+format = |precision = %.2d|::|precision = 40| ret = 14
+format = |precision = %.3d|::|precision = 040| ret = 15
+format = |precision = %.4d|::|precision = 0040| ret = 16
+format = |precision = %.5d|::|precision = 00040| ret = 17
+format = |precision = %.7d|::|precision = 0000040| ret = 19
+format = |precision = %.10d|::|precision = 0000000040| ret = 22
+format = |precision = %.17d|::|precision = 00000000000000040| ret = 29
+format = |precision = %.d|::|precision = 1003| ret = 16
+format = |precision = %.0d|::|precision = 1003| ret = 16
+format = |precision = %.1d|::|precision = 1003| ret = 16
+format = |precision = %.2d|::|precision = 1003| ret = 16
+format = |precision = %.3d|::|precision = 1003| ret = 16
+format = |precision = %.4d|::|precision = 1003| ret = 16
+format = |precision = %.5d|::|precision = 01003| ret = 17
+format = |precision = %.7d|::|precision = 0001003| ret = 19
+format = |precision = %.10d|::|precision = 0000001003| ret = 22
+format = |precision = %.17d|::|precision = 00000000000001003| ret = 29
+format = |precision = %.d|::|precision = -1| ret = 14
+format = |precision = %.0d|::|precision = -1| ret = 14
+format = |precision = %.1d|::|precision = -1| ret = 14
+format = |precision = %.2d|::|precision = -01| ret = 15
+format = |precision = %.3d|::|precision = -001| ret = 16
+format = |precision = %.4d|::|precision = -0001| ret = 17
+format = |precision = %.5d|::|precision = -00001| ret = 18
+format = |precision = %.7d|::|precision = -0000001| ret = 20
+format = |precision = %.10d|::|precision = -0000000001| ret = 23
+format = |precision = %.17d|::|precision = -00000000000000001| ret = 30
+format = |precision = %.d|::|precision = -42| ret = 15
+format = |precision = %.0d|::|precision = -42| ret = 15
+format = |precision = %.1d|::|precision = -42| ret = 15
+format = |precision = %.2d|::|precision = -42| ret = 15
+format = |precision = %.3d|::|precision = -042| ret = 16
+format = |precision = %.4d|::|precision = -0042| ret = 17
+format = |precision = %.5d|::|precision = -00042| ret = 18
+format = |precision = %.7d|::|precision = -0000042| ret = 20
+format = |precision = %.10d|::|precision = -0000000042| ret = 23
+format = |precision = %.17d|::|precision = -00000000000000042| ret = 30
+format = |precision = %.d|::|precision = | ret = 12
+format = |precision = %.0d|::|precision = | ret = 12
+format = |precision = %.1d|::|precision = 0| ret = 13
+format = |precision = %.2d|::|precision = 00| ret = 14
+format = |precision = %.3d|::|precision = 000| ret = 15
+format = |precision = %.4d|::|precision = 0000| ret = 16
+format = |precision = %.5d|::|precision = 00000| ret = 17
+format = |precision = %.7d|::|precision = 0000000| ret = 19
+format = |precision = %.10d|::|precision = 0000000000| ret = 22
+format = |precision = %.17d|::|precision = 00000000000000000| ret = 29
+format = |zero flag = %013d|::|zero flag = 0000000000042| ret = 25
+format = |zero flag = %013d|::|zero flag = 0000000000000| ret = 25
+format = |zero flag = %013d|::|zero flag = -000000000042| ret = 25
+format = |zero flag = %013d|::|zero flag = -000000000001| ret = 25
+format = |zero flag = %013d|::|zero flag = 0000000000001| ret = 25
+format = |space flag = % d|::|space flag =  1| ret = 15
+format = |space flag = % 13d|::|space flag =             1| ret = 26
+format = |space flag = % .13d|::|space flag =  0000000000001| ret = 27
+format = |space flag = % 7.13d|::|space flag =  0000000000001| ret = 27
+format = |space flag = % 13.7d|::|space flag =       0000001| ret = 26
+format = |space flag = % d|::|space flag = -1| ret = 15
+format = |space flag = % 13d|::|space flag =            -1| ret = 26
+format = |space flag = % .13d|::|space flag = -0000000000001| ret = 27
+format = |space flag = % 7.13d|::|space flag = -0000000000001| ret = 27
+format = |space flag = % 13.7d|::|space flag =      -0000001| ret = 26
+format = |space flag = % d|::|space flag =  0| ret = 15
+format = |space flag = % 13d|::|space flag =             0| ret = 26
+format = |space flag = % .13d|::|space flag =  0000000000000| ret = 27
+format = |space flag = % 7.13d|::|space flag =  0000000000000| ret = 27
+format = |space flag = % 13.7d|::|space flag =       0000000| ret = 26
+format = |space flag = % d|::|space flag = -1| ret = 15
+format = |space flag = % 13d|::|space flag =            -1| ret = 26
+format = |space flag = % .13d|::|space flag = -0000000000001| ret = 27
+format = |space flag = % 7.13d|::|space flag = -0000000000001| ret = 27
+format = |space flag = % 13.7d|::|space flag =      -0000001| ret = 26
+format = |%3.*i
+|::| 18
+| ret = 4
+format = |%s|::|abc| ret = 3
+format = |%.d|::|1| ret = 1
+format = |%.d|::|| ret = 0
+format = |%.0d|::|1| ret = 1
+format = |%.0d|::|| ret = 0
+format = |%lo, %lo|::|0, 1777777777777777777777| ret = 25
+format = |%llO|::|177777| ret = 6

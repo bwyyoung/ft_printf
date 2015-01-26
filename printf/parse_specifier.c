@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 19:48:22 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/13 13:17:23 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/15 20:06:05 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int					parse_specifier(t_conversion *conversion
 		|| current == 'C' || current == 'S')
 	{
 		if (conversion->length != DEFAULT_LENGTH)
-			return (mixed_masquerading_and_length(conversion->length
-												  , current, format));
+			mixed_masquerading_and_length(conversion->length
+										  , current, format);
 		conversion->length = L;
 	}
 	format->location++;
