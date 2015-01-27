@@ -6,7 +6,7 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/26 19:03:08 by tfleming          #+#    #+#              #
-#    Updated: 2015/01/26 19:11:27 by tfleming         ###   ########.fr        #
+#    Updated: 2015/01/27 19:15:13 by tfleming         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -142,6 +142,7 @@ PRINTF_COMPILED =	ft_printf.o \
 					validate_flags.o \
 					print_conversion.o \
 					print_normal.o \
+					print_char.o \
 					print_wide_chars.o \
 					print_format_error.o \
 					get_current.o \
@@ -149,10 +150,10 @@ PRINTF_COMPILED =	ft_printf.o \
 					get_unsigned_number_argument.o \
 					get_string_decimal.o \
 					get_string_string.o \
-					get_string_char.o \
 					get_string_pointer.o \
 					get_string_octal.o \
-					get_string_hex.o
+					get_string_hex.o \
+					add_final_padding.o
 
 COMPILED =			$(FT_COMPILED) $(PRINTF_COMPILED)
 

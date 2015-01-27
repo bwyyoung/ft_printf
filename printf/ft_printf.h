@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 16:36:32 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/26 20:11:57 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/27 19:13:55 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct			s_format
 	const char	*string;
 	size_t		location;
 	size_t		written;
-	t_bool				should_not_print;
 }						t_format;
 
 typedef struct			s_flags
@@ -87,8 +86,6 @@ typedef struct			s_conversion
 ** used to get the strings
 */
 
-typedef char			*(*t_get_string)(t_conversion*, va_list);
-
 int						ft_printf(const char *format_string, ...);
 void					handle_format(t_format *format, va_list arguments);
 int						parse_conversion(t_conversion *conversion
@@ -111,10 +108,12 @@ int						validate_flags(t_conversion *conversion
 										, t_format *format);
 void					print_conversion(t_conversion *conversion
 											, va_list arguments
-											, size_t *written);
+											, t_format *format);
 void					print_normal(t_conversion *conversion
-										, va_list arguments
-										, size_t *written);
+											, va_list arguments
+											, t_format *format);
+void					print_char(t_conversion *conversion, char argument
+											, t_format *format);
 void					print_wide_chars(t_conversion *conversion
 											, wchar_t *string, size_t length
 											, size_t *written);
@@ -127,13 +126,13 @@ char					*get_string_decimal(t_conversion *conversion
 											, va_list arguments);
 char					*get_string_string(t_conversion *conversion
 											, va_list arguments);
-char					*get_string_char(t_conversion *conversion
-											, va_list arguments);
 char					*get_string_pointer(t_conversion *conversion
 											, va_list arguments);
 char					*get_string_hex(t_conversion *conversion
 											, va_list arguments);
 char					*get_string_octal(t_conversion *conversion
 											, va_list arguments);
+void					add_final_padding(t_conversion *conversion
+										  , char **string);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 21:00:03 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/26 20:12:06 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/27 14:04:36 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ static void			handle_conversion(t_format *format, va_list arguments)
 	ft_bzero(&conversion, sizeof(conversion));
 	if (parse_conversion(&conversion, arguments, format) == OKAY
 		&& validate_conversion(&conversion, format) == OKAY)
-		should_not_print = print_conversion(&conversion, arguments
-											, &format->written);
+		print_conversion(&conversion, arguments, format);
 	else if (*get_current(format) == '%')
 	{
 		ft_putchar('%');
@@ -48,15 +47,13 @@ static void			handle_conversion(t_format *format, va_list arguments)
 void				handle_format(t_format *format, va_list arguments)
 {
 	char			current;
-	t_bool			should_not_print;
 
-	should_not_print = 0;
 	while ((current = *get_current(format)))
 	{
 		if (current == '%')
 		{
 			format->location++;
-			handle_conversion(format, arguments, &should_not_print);
+			handle_conversion(format, arguments);
 		}
 		else
 		{
