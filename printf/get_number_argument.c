@@ -1,5 +1,15 @@
-// header
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_number_argument.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/28 18:14:24 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/28 18:14:35 by tfleming         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+// am I using this?
 #include "ft_printf.h"
 
 intmax_t		get_number_argument(t_length length, va_list arguments)

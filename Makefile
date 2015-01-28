@@ -6,7 +6,7 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/26 19:03:08 by tfleming          #+#    #+#              #
-#    Updated: 2015/01/27 19:15:13 by tfleming         ###   ########.fr        #
+#    Updated: 2015/01/28 21:16:56 by tfleming         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -140,6 +140,7 @@ PRINTF_COMPILED =	ft_printf.o \
 					parse_specifier.o \
 					validate_conversion.o \
 					validate_flags.o \
+					validate_flags_ignored.o \
 					print_conversion.o \
 					print_normal.o \
 					print_char.o \
@@ -153,7 +154,8 @@ PRINTF_COMPILED =	ft_printf.o \
 					get_string_pointer.o \
 					get_string_octal.o \
 					get_string_hex.o \
-					add_final_padding.o
+					add_final_padding.o \
+					add_precision_padding.o
 
 COMPILED =			$(FT_COMPILED) $(PRINTF_COMPILED)
 

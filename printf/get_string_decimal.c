@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 11:13:39 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/26 19:41:17 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/28 21:17:17 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,6 @@ static void			add_prefix(t_conversion *conversion, char **string)
 	}
 }
 
-static void			padding_after_prefix(t_conversion *conversion
-										 , char **string)
-{
-	intmax_t		length;
-	intmax_t		needed;
-	char			*new;
-	int				offset;
-
-	length = ft_strlen(*string);
-	offset = ft_isdigit(**string) ? 0 : 1;
-	needed = (conversion->flags.pad_with_zeros ?
-			  conversion->width : conversion->precision + offset) - length;
-	if (needed > 0)
-	{
-		new = ft_strnew(length + needed + offset);
-		if (offset)
-			new[0] = **string;
-		ft_memset(new + offset, '0', needed);
-		ft_strcpy(new + needed + offset, *string + offset);
-		free(*string);
-		*string = new;
-	}
-}
-
 char				*get_string_decimal(t_conversion *conversion
 								   , va_list arguments)
 {
@@ -78,6 +54,6 @@ char				*get_string_decimal(t_conversion *conversion
 	else
 		string = ft_itoa_ularge(unsigned_value);
 	add_prefix(conversion, &string);
-	padding_after_prefix(conversion, &string);
+	add_precision_padding(conversion, &string);
 	return (string);
 }

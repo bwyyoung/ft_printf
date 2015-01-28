@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 16:58:37 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/13 13:19:02 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/28 18:17:36 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,22 @@ static int			pointer_has_specified_size(t_conversion *conversion
 	return (OKAY);
 }
 
-int					validate_conversion(t_conversion *conversion
+static int			is_it_okay(t_conversion *conversion
 										, t_format *format)
 {
 	if (pointer_has_specified_size(conversion, format) == OKAY
 		&& validate_flags(conversion, format) == OKAY)
 		return (OKAY);
 	return (ERROR);
+}
+
+int					validate_conversion(t_conversion *conversion
+										, t_format *format)
+{
+	int				returned;
+
+	format->location--;
+	returned = is_it_okay(conversion, format);
+	format->location++;
+	return (returned);
 }

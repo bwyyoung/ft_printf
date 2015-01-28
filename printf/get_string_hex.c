@@ -1,4 +1,14 @@
-// header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_string_hex.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/28 20:12:16 by tfleming          #+#    #+#             */
+/*   Updated: 2015/01/28 21:28:06 by tfleming         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -6,11 +16,24 @@ char				*get_string_hex(t_conversion *conversion
 									  , va_list arguments)
 {
 	char			*string;
+	char			*final;
 	uintmax_t		value;
 
 	value = get_unsigned_number_argument(conversion->length, arguments);
-	string = ft_basetoa(value, 16);
+	if (!value && conversion->precision_set)
+		string = ft_strdup("");
+	else
+		string = ft_basetoa(value, 16);
 	if (conversion->specifier == HEX_LOWER)
 		ft_strtolower(string);
-	return (string);
+	add_precision_padding(conversion, &string);
+	if (conversion->flags.hashtag && string[0] != '0')
+	{
+		final = ft_strjoin(conversion->specifier == HEX_LOWER ? "0x" : "0X"
+							, string);
+		free(string);
+	}
+	else
+		final = string;
+	return (final);
 }

@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 16:36:32 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/27 19:13:55 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/28 21:18:01 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,9 @@ int						parse_specifier(t_conversion *conversion
 int						validate_conversion(t_conversion *conversion
 											, t_format *format);
 int						validate_flags(t_conversion *conversion
-										, t_format *format);
+											, t_format *format);
+void					validate_flags_ignored(t_conversion *conversion
+											, t_format *format);
 void					print_conversion(t_conversion *conversion
 											, va_list arguments
 											, t_format *format);
@@ -133,6 +135,8 @@ char					*get_string_hex(t_conversion *conversion
 char					*get_string_octal(t_conversion *conversion
 											, va_list arguments);
 void					add_final_padding(t_conversion *conversion
-										  , char **string);
+											, char **string);
+void					add_precision_padding(t_conversion *conversion
+											  , char **string);
 
 #endif
