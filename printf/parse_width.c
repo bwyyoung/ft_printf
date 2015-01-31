@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 17:37:52 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/31 15:34:29 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 16:10:45 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 
 static int			width_too_long(t_conversion *conversion, t_format *format)
 {
-	ft_putstr_fd("ft_printf: suspicious width given by * argument ", 2);
-	ft_putstr_fd("(greater than INT_MAX): ", 2);
+	ft_putstr_fd("ft_printf: suspicious width given by * argument: ", 2);
 	ft_putnbr_large_fd(conversion->width, 2);
 	ft_putstr_fd("\n", 2);
 	print_format_error(format);
