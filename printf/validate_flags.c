@@ -6,14 +6,14 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 18:13:50 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/28 20:59:42 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:28:46 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int			show_positive_flags(t_conversion *conversion
-										   , t_format *format)
+											, t_format *format)
 {
 	if (conversion->flags.positive_values_begin_blank
 		|| conversion->flags.show_sign)
@@ -33,7 +33,7 @@ static int			show_positive_flags(t_conversion *conversion
 }
 
 static int			zero_flag(t_conversion *conversion
-								   , t_format *format)
+									, t_format *format)
 {
 	if (conversion->flags.pad_with_zeros)
 	{
@@ -58,8 +58,8 @@ static int			hashtag_flag(t_conversion *conversion
 	if (conversion->flags.hashtag)
 	{
 		if (!(conversion->specifier == HEX_LOWER
-			  || conversion->specifier == HEX_UPPER
-			  || conversion->specifier == OCTAL))
+				|| conversion->specifier == HEX_UPPER
+				|| conversion->specifier == OCTAL))
 		{
 			ft_putstr_fd("ft_printf: flag '#' results in undefined ", 2);
 			ft_putstr_fd("behaviour with ' ", 2);
@@ -73,7 +73,7 @@ static int			hashtag_flag(t_conversion *conversion
 }
 
 int					validate_flags(t_conversion *conversion
-								   , t_format *format)
+									, t_format *format)
 {
 	if (show_positive_flags(conversion, format) == OKAY
 		&& zero_flag(conversion, format) == OKAY

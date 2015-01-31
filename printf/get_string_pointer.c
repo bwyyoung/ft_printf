@@ -6,14 +6,14 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:03:41 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/13 16:08:27 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:26:25 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 char				*get_string_pointer(t_conversion *conversion
-									   , va_list arguments)
+											, va_list arguments)
 {
 	char			*before;
 	char			*string;
@@ -26,9 +26,7 @@ char				*get_string_pointer(t_conversion *conversion
 	ft_strtolower(before);
 	string = ft_strjoin("0x", before);
 	free(before);
-	return (string);
-	
 	(void)conversion;
 	(void)arguments;
-	/* return (string); */
+	return (string);
 }

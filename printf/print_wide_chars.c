@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 20:02:27 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/27 15:49:46 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:33:58 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void			print_wint(wint_t wint, size_t *written)
 }
 
 static size_t		count_wide_chars(t_conversion *conversion
-								 , wchar_t *string, size_t *length)
+										, wchar_t *string, size_t *length)
 {
 	size_t			i;
 	size_t			total_bytes;
@@ -71,7 +71,6 @@ static size_t		count_wide_chars(t_conversion *conversion
 			add = 3;
 		else if (string[i] <= 0x10FFFF)
 			add = 4;
-		
 		if (conversion->precision_set
 			&& (total_bytes + add) > conversion->precision)
 			break ;
@@ -82,15 +81,15 @@ static size_t		count_wide_chars(t_conversion *conversion
 	return (total_bytes);
 }
 
-void			place_padding(char padder, size_t width, size_t *written)
+static void			place_padding(char padder, size_t width, size_t *written)
 {
 	ft_putcharn(padder, width);
 	*written += width;
 }
 
-void			print_wide_chars(t_conversion *conversion
-									 , wchar_t *string, size_t length
-									 , size_t *written)
+void				print_wide_chars(t_conversion *conversion
+										, wchar_t *string, size_t length
+										, size_t *written)
 {
 	size_t		i;
 	size_t		total_bytes;
@@ -98,7 +97,7 @@ void			print_wide_chars(t_conversion *conversion
 	total_bytes = count_wide_chars(conversion, string, &length);
 	if (!conversion->flags.left_justify && conversion->width > total_bytes)
 		place_padding((conversion->flags.pad_with_zeros ? '0' : ' ')
-					  , conversion->width - total_bytes, written); // verify
+						, conversion->width - total_bytes, written);
 	i = 0;
 	while (i < length)
 	{

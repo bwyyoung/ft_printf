@@ -6,13 +6,13 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 19:49:28 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/28 22:01:25 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 14:16:52 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				add_precision(t_conversion *conversion, char **string)
+static void			add_precision(t_conversion *conversion, char **string)
 {
 	char			*new;
 

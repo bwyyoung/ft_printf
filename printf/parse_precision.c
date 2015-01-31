@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 19:15:59 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/12 18:02:46 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:35:03 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 ** very much like parse_width
 */
 
-static int			precision_too_long(t_conversion *conversion, t_format *format)
+static int			precision_too_long(t_conversion *conversion
+											, t_format *format)
 {
 	ft_putstr_fd("ft_printf: suspicious precision given by * argument: ", 2);
 	ft_putnbr_large_fd(conversion->precision, 2);
@@ -25,8 +26,8 @@ static int			precision_too_long(t_conversion *conversion, t_format *format)
 	return (ERROR);
 }
 
-int					from_star(t_conversion *conversion
-							  , va_list arguments, t_format *format)
+static void			from_star(t_conversion *conversion
+								, va_list arguments, t_format *format)
 {
 	conversion->precision = va_arg(arguments, unsigned int);
 	if (conversion->precision > LARGEST_STAR_ARGUMENT)
@@ -35,24 +36,21 @@ int					from_star(t_conversion *conversion
 		conversion->precision = 0;
 	}
 	format->location += 1;
-	return (OKAY);
 }
 
-int					written_numbers(t_conversion *conversion, t_format *format)
+static void			written_numbers(t_conversion *conversion, t_format *format)
 {
 	size_t			i;
 	char			current;
-	
+
 	i = 0;
 	while (((current = *(get_current(format) + i)))
-		   && ft_isdigit(current))
+			&& ft_isdigit(current))
 	{
 		ft_atoi_add_digit_u(current, &conversion->precision);
 		i++;
 	}
 	format->location += i;
-	conversion->precision_set = 1;
-	return (OKAY);		
 }
 
 int					parse_precision(t_conversion *conversion
@@ -65,6 +63,7 @@ int					parse_precision(t_conversion *conversion
 			from_star(conversion, arguments, format);
 		else
 			written_numbers(conversion, format);
+		conversion->precision_set = 1;
 	}
 	return (OKAY);
 }

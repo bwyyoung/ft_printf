@@ -6,16 +6,16 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 18:14:24 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/28 18:14:35 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:25:30 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-// am I using this?
+
 #include "ft_printf.h"
 
 intmax_t		get_number_argument(t_length length, va_list arguments)
 {
 	intmax_t	value;
-	
+
 	if (length == L)
 		return (va_arg(arguments, long));
 	if (length == LL)

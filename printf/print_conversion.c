@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 23:03:06 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/27 19:16:17 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:34:11 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,15 @@ static void			print_wide_char(t_conversion *conversion, wint_t wint
 	wchar_t	wchar;
 
 	if (wint > 0x10FFFF)
-		fprintf(stdout, "INCORRECT!"); // nope
-	wchar = (wchar_t)wint;
-	print_wide_chars(conversion, &wchar, 1, &format->written);
+	{
+		ft_putstr_fd("ft_printf: invalid wide character encountered", 2);
+		print_format_error(format);
+	}
+	else
+	{
+		wchar = (wchar_t)wint;
+		print_wide_chars(conversion, &wchar, 1, &format->written);
+	}
 }
 
 void				print_conversion(t_conversion *conversion, va_list arguments
@@ -41,7 +47,7 @@ void				print_conversion(t_conversion *conversion, va_list arguments
 {
 	if (conversion->length >= L && conversion->specifier == STRING)
 		print_wide_string(conversion, va_arg(arguments, wchar_t*)
-						  , &format->written);
+							, &format->written);
 	else if (conversion->specifier == CHAR)
 	{
 		if (conversion->length >= L)

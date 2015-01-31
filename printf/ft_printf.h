@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 16:36:32 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/28 21:18:01 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:01:15 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,6 @@ char					*get_string_octal(t_conversion *conversion
 void					add_final_padding(t_conversion *conversion
 											, char **string);
 void					add_precision_padding(t_conversion *conversion
-											  , char **string);
+											, char **string);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 17:35:02 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/13 13:15:07 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:37:20 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int					parse_flags(t_conversion *conversion, t_format *format)
 {
 	t_bool			*flag;
 	char			current;
-	
+
 	while (((current = *get_current(format)))
-		   && ((flag = get_flag(current, &conversion->flags))))
+			&& ((flag = get_flag(current, &conversion->flags))))
 	{
 		if (*flag)
 			return (repeated_flag(current, format));

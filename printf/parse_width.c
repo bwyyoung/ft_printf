@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 17:37:52 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/12 15:09:20 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:34:29 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int					parse_width(t_conversion *conversion
 	{
 		i = 0;
 		while (((current = *(get_current(format) + i)))
-			   && ft_isdigit(current))
+				&& ft_isdigit(current))
 		{
 			ft_atoi_add_digit_u(current, &conversion->width);
 			i++;
