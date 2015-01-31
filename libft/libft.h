@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 12:34:27 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/26 17:56:32 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 16:02:32 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char			*ft_strtrim(char const *string);
 char			**ft_strsplit(char const *string, char c);
 void			ft_strsplit_free(char **thing);
 size_t			ft_countchars(char const *chars, char needle
-							  , size_t length);
+								, size_t length);
 
 /*
 ** printing

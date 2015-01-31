@@ -1,6 +1,0 @@
-get rid of -g flag
-norminette
-get rid of files that aren't useful
-check for (void)something
-
-remove main.c

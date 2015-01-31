@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/19 17:59:02 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/19 18:03:06 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 16:00:33 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void				ft_putstr_justify_right(char *string
 {
 	size_t			length;
 	size_t			i;
-	
 
 	length = ft_strlen(string);
 	i = 0;

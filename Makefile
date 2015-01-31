@@ -6,14 +6,14 @@
 #    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/26 19:03:08 by tfleming          #+#    #+#              #
-#    Updated: 2015/01/28 21:16:56 by tfleming         ###   ########.fr        #
+#    Updated: 2015/01/31 16:04:00 by tfleming         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =				libftprintf.a
 
 CC =				gcc
-FLAGS =				-Wall -Werror -Wextra -g
+FLAGS =				-Wall -Werror -Wextra
 
 FT_SRC_DIR =		./libft
 PRINTF_SRC_DIR =	./printf

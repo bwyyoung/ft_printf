@@ -6,14 +6,14 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 17:28:28 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/27 17:32:30 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:58:23 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void			ft_putstrn_fd(char const *source, size_t max_length
-							  , int file_descriptor)
+								, int file_descriptor)
 {
 	size_t		length;
 

@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/08 15:26:08 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/12 14:23:59 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 16:02:46 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void			print_literal(char c, int fd)
 }
 
 void				ft_putstr_literal_fd(char const *source
-										 , int file_descriptor)
+											, int file_descriptor)
 {
 	while (*source)
 	{

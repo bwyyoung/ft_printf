@@ -6,14 +6,14 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 20:05:01 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/28 21:28:21 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:44:36 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 char				*get_string_octal(t_conversion *conversion
-									  , va_list arguments)
+										, va_list arguments)
 {
 	char			*string;
 	char			*final;

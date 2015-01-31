@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 19:49:28 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/31 14:16:52 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:44:46 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void			add_precision(t_conversion *conversion, char **string)
 }
 
 char				*get_string_string(t_conversion *conversion
-									   , va_list arguments)
+										, va_list arguments)
 {
 	char			*string;
 

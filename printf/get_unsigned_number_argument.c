@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 15:39:01 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/31 15:39:07 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/01/31 15:45:51 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ uintmax_t		get_unsigned_number_argument(t_length length
 												, va_list arguments)
 {
 	uintmax_t	value;
-	
+
 	if (length == L)
 		return (va_arg(arguments, unsigned long));
 	if (length == LL)
