@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 19:15:59 by tfleming          #+#    #+#             */
-/*   Updated: 2015/01/31 15:35:03 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/02/03 14:56:14 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,56 @@ static int			precision_too_long(t_conversion *conversion
 	return (ERROR);
 }
 
-static void			from_star(t_conversion *conversion
-								, va_list arguments, t_format *format)
+static size_t		from_star(t_conversion *conversion, va_list arguments)
 {
 	conversion->precision = va_arg(arguments, unsigned int);
-	if (conversion->precision > LARGEST_STAR_ARGUMENT)
-	{
-		precision_too_long(conversion, format);
-		conversion->precision = 0;
-	}
-	format->location += 1;
+	conversion->precision_set = 1;
+	return (1);
 }
 
-static void			written_numbers(t_conversion *conversion, t_format *format)
+static size_t		written_numbers(t_conversion *conversion, t_format *format)
 {
 	size_t			i;
 	char			current;
 
-	i = 0;
+	if (*get_current(format) == '-')
+		i = 1;
+	else
+		i = 0;
 	while (((current = *(get_current(format) + i)))
 			&& ft_isdigit(current))
 	{
 		ft_atoi_add_digit_u(current, &conversion->precision);
 		i++;
 	}
-	format->location += i;
+	if (*get_current(format) == '-' && conversion->precision == 0)
+		return (0);
+	else
+	{
+		conversion->precision_set = 1;
+		return (i);
+	}
 }
 
 int					parse_precision(t_conversion *conversion
 									, va_list arguments, t_format *format)
 {
+	size_t			length;
+
 	if (*get_current(format) == '.')
 	{
 		format->location++;
 		if (*get_current(format) == '*')
-			from_star(conversion, arguments, format);
+			length = from_star(conversion, arguments);
 		else
-			written_numbers(conversion, format);
-		conversion->precision_set = 1;
+			length = written_numbers(conversion, format);
+		if (conversion->precision > LARGEST_STAR_ARGUMENT)
+		{
+			precision_too_long(conversion, format);
+			conversion->precision = 0;
+		}
+		format->location += length;
+		
 	}
 	return (OKAY);
 }
