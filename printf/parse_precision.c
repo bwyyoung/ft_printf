@@ -6,7 +6,7 @@
 /*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 19:15:59 by tfleming          #+#    #+#             */
-/*   Updated: 2015/02/03 14:56:14 by tfleming         ###   ########.fr       */
+/*   Updated: 2015/02/03 15:30:57 by tfleming         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int					parse_precision(t_conversion *conversion
 			conversion->precision = 0;
 		}
 		format->location += length;
-		
 	}
 	return (OKAY);
 }
