@@ -3,31 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/09/03 12:04:43 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/07 15:01:38 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 09:50:50 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/03 14:30:12 by byoung-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strstr(const char *haystack, const char *needle)
+char	*ft_strstr(const char *str, const char *to_find)
 {
-	size_t		inner;
+	char		c;
+	int			len;
+	char		sc;
+	int			originlen;
+	const char	*strptr;
 
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	while (*haystack)
+	if (str == NULL || to_find == NULL)
+		return (NULL);
+	c = (*to_find);
+	len = ft_strlen(to_find);
+	sc = (*str);
+	originlen = ft_strlen(str);
+	if (!c)
+		return ((char *)str);
+	else if (!sc)
+		return ((char *)0);
+	strptr = str;
+	while (ft_strncmp(strptr, to_find, len) != 0 && *strptr != '\0')
 	{
-		inner = 0;
-		while (haystack[inner] == needle[inner])
-		{
-			if (needle[inner + 1] == '\0')
-				return ((char*)haystack);
-			inner++;
-		}
-		haystack++;
+		strptr++;
+		originlen--;
 	}
+	if (originlen > 0)
+		return ((char *)strptr);
 	return (NULL);
 }

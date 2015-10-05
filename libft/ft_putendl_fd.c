@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_ft.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 12:16:15 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/08 12:27:29 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_putendl_fd(char const *source, int file_descriptor)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	ft_putstr_fd(source, file_descriptor);
-	ft_putchar_fd('\n', file_descriptor);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

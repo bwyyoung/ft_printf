@@ -3,31 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 12:46:14 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/09 20:48:32 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/03 17:57:22 by byoung-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			ft_strlcat(char *first, const char *second, size_t size)
+static size_t		do_strlcat_l(int delta, int nb, char *destcopy,
+const char *src)
 {
-	size_t		end;
-	size_t		i;
+	const char	*srccopy;
 
-	if (size == 0)
-		return (ft_strlen(second));
-	end = ft_strlen(first);
-	if (end > size - 1)
-		return (size + ft_strlen(second));
-	i = 0;
-	while (second[i] && end + i < size - 1)
+	srccopy = src;
+	while (*srccopy != '\0')
 	{
-		first[i + end] = second[i];
-		i++;
+		if (nb != 1)
+		{
+			*destcopy = *srccopy;
+			destcopy++;
+			nb--;
+		}
+		srccopy++;
 	}
-	first[i + end] = '\0';
-	return (end + ft_strlen(second));
+	*destcopy = '\0';
+	return ((srccopy - src) + delta);
+}
+
+size_t				ft_strlcat(char *dest, const char *src, size_t size)
+{
+	char	*destcopy;
+	int		nb;
+	int		delta;
+
+	destcopy = dest;
+	nb = size;
+	while (*destcopy != '\0' && nb-- != 0)
+		destcopy++;
+	delta = (destcopy - dest);
+	nb = size - delta;
+	if (nb == 0)
+		return (delta + ft_strlen(src));
+	return (do_strlcat_l(delta, nb, destcopy, src));
 }

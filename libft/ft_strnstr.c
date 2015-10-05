@@ -3,34 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 11:49:32 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/07 12:23:16 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 09:50:50 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/03 11:22:41 by byoung-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t		outer;
-	size_t		inner;
+	unsigned int	len2;
 
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	len -= ft_strlen(needle) - 1;
-	outer = 0;
-	while (outer < len && haystack[outer])
+	if (*s2 == '\0')
+		return ((char *)s1);
+	len2 = ft_strlen(s2);
+	while (*s1 != '\0' && n-- >= len2)
 	{
-		inner = 0;
-		while ((haystack + outer)[inner] == needle[inner])
-		{
-			if (needle[inner + 1] == '\0')
-				return ((char*)haystack + outer);
-			inner++;
-		}
-		outer++;
+		if (*s1 == *s2 && ft_memcmp(s1, s2, len2) == 0)
+			return ((char *)s1);
+		s1++;
 	}
 	return (NULL);
 }

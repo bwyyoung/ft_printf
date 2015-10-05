@@ -3,44 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 12:11:40 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/09 19:02:26 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_isspace_small(char c)
+static int			strisblank(char c)
 {
-	return (c == ' ' || c == '\n' || c == '\t');
+	if (c != ' ' && c != '\n' && c != '\t')
+		return (0);
+	return (1);
 }
 
-char			*ft_strtrim(char const *original)
+static char			*fillstrnew(int i, int j, char const *s, char *strnew)
 {
-	char	*new;
-	size_t	begin;
-	size_t	end;
-	size_t	i;
+	int	k;
 
-	begin = 0;
-	while (original[begin] && ft_isspace_small(original[begin]))
-		begin++;
-	end = ft_strchr(original + begin, '\0') - original;
-	while (end > begin && ft_isspace_small(original[end - 1]))
-		end--;
-	if (end < begin)
-		end = begin;
-	new = malloc(sizeof(char) * (end - begin + 1));
-	if (!new)
-		return (NULL);
-	i = 0;
-	while (i + begin < end)
+	k = 0;
+	while (i <= j)
 	{
-		new[i] = original[begin + i];
+		strnew[k] = s[i];
+		k++;
 		i++;
 	}
-	new[i] = '\0';
-	return (new);
+	strnew[k] = '\0';
+	return (strnew);
+}
+
+char				*ft_strtrim(char const *s)
+{
+	int		i;
+	int		j;
+	char	*strnew;
+
+	strnew = NULL;
+	if (s)
+	{
+		j = ft_strlen(s) - 1;
+		i = 0;
+		while (strisblank(s[i]))
+			i++;
+		strnew = (char *)malloc(sizeof(char) * (j - i + 1));
+		while (strisblank(s[j]))
+			j--;
+		if (i == 0 && j == (int)ft_strlen(s) - 1)
+			return (ft_strdup(s));
+		return (fillstrnew(i, j, s, strnew));
+	}
+	return (NULL);
 }

@@ -3,47 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/08/31 15:28:00 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/09 20:54:19 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 09:50:50 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/11/06 22:47:08 by byoung-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		numbers_part(const char *str, long long number, int negative)
+int		ft_atoi(const char *str)
 {
-	while (*str <= '9' && *str >= '0')
+	int			neg;
+	const char	*s;
+	long		val;
+
+	s = str;
+	neg = 1;
+	val = 0;
+	while ((*s == ' ' || *s == '\t' || *s == '\n'
+	|| *s == '\r' || *s == '\v' || *s == '\f' || *s == '\12'))
+		s++;
+	if (*s == '+' || *s == '-')
 	{
-		number = number * 10 + *str - '0';
-		str++;
-		if (number < 0)
-		{
-			if (negative == 1)
-				return (0);
-			return (-1);
-		}
+		if (*s == '-')
+			neg = -1;
+		s++;
 	}
-	if (negative)
-		number = -number;
-	return (number);
-}
-
-int				ft_atoi(const char *str)
-{
-	long long	number;
-	int			negative;
-
-	negative = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-' && str++)
-		negative = 1;
-	else if (*str == '+')
-		str++;
-	while (*str == '0')
-		str++;
-	number = 0;
-	return (numbers_part(str, number, negative));
+	while (*s >= '0' && *s <= '9')
+	{
+		val *= 10;
+		val += (long)(*s - '0');
+		s++;
+	}
+	if (((int)(val * neg) == 0 && val != 0) || (val < 0))
+		val = (neg < 0) ? 0 : -1;
+	return ((int)(val * neg));
 }

@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 12:15:28 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/08 19:14:58 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_putstr_fd(char const *source, int file_descriptor)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	write(file_descriptor, source, ft_strlen(source));
+	int		i;
+
+	i = 0;
+	while (s[i] != 0)
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }

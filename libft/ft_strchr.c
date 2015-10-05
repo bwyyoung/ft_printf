@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 11:20:55 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/07 11:29:06 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/09 14:25:03 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/09 14:25:08 by byoung-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strchr(const char *haystack, int needle)
+char		*ft_strchr(const char *s, int c)
 {
-	while (*haystack && *haystack != needle)
-		haystack++;
-	if (*haystack == needle)
-		return ((char*)haystack);
+	const char	*str;
+
+	str = (const char *)s;
+	while (*str != (char)c && *str != '\0')
+		str++;
+	if (*str == (char)c)
+		return ((char *)str);
 	return (NULL);
 }

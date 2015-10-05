@@ -3,20 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 14:47:31 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/09 18:59:24 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_memmove(void *dest, const void *source, size_t len)
+void	*ft_memmove(char *dst, const char *src, size_t len)
 {
-	char	copy[len];
+	char		*d;
+	const char	*s;
 
-	ft_memcpy(copy, source, len);
-	ft_memcpy(dest, copy, len);
-	return (dest);
+	d = dst;
+	s = src;
+	if (s < d)
+	{
+		d += len;
+		s += len;
+		while (len > 0)
+		{
+			len--;
+			*--d = *--s;
+		}
+	}
+	else
+	{
+		while (len > 0)
+		{
+			len--;
+			*d++ = *s++;
+		}
+	}
+	return (dst);
 }

@@ -3,46 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 12:13:02 by tfleming          #+#    #+#             */
-/*   Updated: 2014/12/19 18:24:36 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		write_chars(char *first, char *now, int number)
+static int	findn(int num)
 {
-	while (now >= first)
+	int		n;
+
+	n = 0;
+	while (num)
 	{
-		*now = number % 10 + '0';
-		number /= 10;
-		now--;
+		num /= 10;
+		n++;
 	}
+	return (n);
 }
 
-char			*ft_itoa(int number)
+static char	*calcmore0(int n, char *p)
 {
-	char	*new;
-	int		length;
+	while (n != 0)
+	{
+		*--p = '0' + (n % 10);
+		n /= 10;
+	}
+	return (p);
+}
 
-	if (number == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (number == 0)
-		return (ft_strdup("0"));
-	length = ft_count_digits(number);
-	new = malloc(sizeof(char) * (length + (number < 0) + 1));
-	if (number < 0)
+static char	*calcless0(int n, char *p)
+{
+	while (n != 0)
 	{
-		new[0] = '-';
-		write_chars(new + 1, new + length, 0 - number);
-		new[length + 1] = '\0';
+		*--p = '0' - (n % 10);
+		n /= 10;
 	}
+	*--p = '-';
+	return (p);
+}
+
+char		*ft_itoa(int n)
+{
+	char		*p;
+	int			add;
+
+	if (n == 0)
+	{
+		if (!(p = ft_strnew(1)))
+			return (NULL);
+		*p = '0';
+		return (p);
+	}
+	else if (n > 0)
+		add = 0;
 	else
-	{
-		write_chars(new, new + length - 1, number);
-		new[length] = '\0';
-	}
-	return (new);
+		add = 1;
+	if (!(p = ft_strnew(findn(n) + add)))
+		return (NULL);
+	p = p + findn(n) + add;
+	*p = '\0';
+	if (n > 0)
+		return (calcmore0(n, p));
+	else
+		return (calcless0(n, p));
 }

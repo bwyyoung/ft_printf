@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 15:50:40 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/07 15:59:31 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_striter(char *string, void (*func)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-	while (*string)
+	char	*sp;
+
+	if (s != NULL && (*f) != NULL)
 	{
-		func(string);
-		string++;
+		sp = s;
+		while (*sp != '\0')
+		{
+			(*f)(sp);
+			sp++;
+		}
 	}
 }

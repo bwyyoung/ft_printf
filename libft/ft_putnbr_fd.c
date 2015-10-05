@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 12:16:36 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/08 19:28:40 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			ft_putnbr_fd(int number, int file_descriptor)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*string;
+	char	*val;
 
-	string = ft_itoa(number);
-	ft_putstr_fd(string, file_descriptor);
-	free(string);
+	val = ft_itoa (n);
+	ft_putstr_fd(val, fd);
 }

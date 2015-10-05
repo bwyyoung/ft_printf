@@ -3,27 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 21:35:06 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/14 12:10:14 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/03 17:57:22 by byoung-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strncat(char *first, const char *second, size_t len)
+char		*ft_strncat(char *dest, const char *src, size_t nb)
 {
-	char	*end;
-	size_t	i;
+	char *destcopy;
 
-	end = ft_strchr(first, '\0');
-	i = 0;
-	while (second[i] && i < len)
+	destcopy = dest;
+	if (nb != 0)
 	{
-		end[i] = second[i];
-		i++;
+		while (*destcopy)
+			destcopy++;
+		while (nb != 0)
+		{
+			if ((*destcopy = *src) == 0)
+			{
+				break ;
+			}
+			src++;
+			destcopy++;
+			nb--;
+		}
+		*destcopy = 0;
 	}
-	end[i] = '\0';
-	return (first);
+	return (dest);
 }

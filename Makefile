@@ -1,183 +1,110 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+         #
+#    By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/12/26 19:03:08 by tfleming          #+#    #+#              #
-#    Updated: 2015/01/31 16:04:00 by tfleming         ###   ########.fr        #
+#    Created: 2014/09/09 10:19:19 by byoung-w          #+#    #+#              #
+#    Updated: 2014/12/10 16:19:13 by byoung-w         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
-NAME =				libftprintf.a
+NAME	=	libftprintf.a
+NAME_LIBFT = libft/libft.a
+CC		=	gcc
+CCO		=	gcc -o
+LIB		=	-L libft/ -lft
+ARRC	=	ar rc
+RANLIB	=	ranlib
+FLAGS	=	-Wall -Werror -Wextra -c
 
-CC =				gcc
-FLAGS =				-Wall -Werror -Wextra
+INC		=	libft/includes/
 
-FT_SRC_DIR =		./libft
-PRINTF_SRC_DIR =	./printf
+C_FILES	= ft_printf.c
+C_FILES += handle_format.c
+C_FILES += parse_conversion.c
+C_FILES += parse_flags.c
+C_FILES += parse_width.c
+C_FILES += parse_precision.c
+C_FILES += parse_length.c
+C_FILES += parse_specifier.c
+C_FILES += validate_conversion.c
+C_FILES += validate_flags.c
+C_FILES += validate_flags_ignored.c
+C_FILES += print_conversion.c
+C_FILES += print_normal.c
+C_FILES += print_char.c
+C_FILES += print_wide_chars.c
+C_FILES += print_format_error.c
+C_FILES += get_current.c
+C_FILES += get_number_argument.c
+C_FILES += get_unsigned_number_argument.c
+C_FILES += get_string_decimal.c
+C_FILES += get_string_string.c
+C_FILES += get_string_pointer.c
+C_FILES += get_string_octal.c
+C_FILES += get_string_hex.c
+C_FILES += add_final_padding.c
+C_FILES += add_precision_padding.c
 
-HEADER =			$(FT_SRC_DIR)libft.h
-PRINTF_SRC_HEADER =	$(PRINTF_SRC_DIR)ft_printf.h
+C_FILES += ft_itoa_ularge.c
+C_FILES += ft_putcharn.c
+C_FILES += ft_utils.c
+C_FILES += ft_basetoa.c
+C_FILES += ft_count_digits.c
+C_FILES += printnum.c
+C_FILES += ft_strtolower.c
 
-FT_COMPILED =		ft_islower.o \
-					ft_isupper.o \
-					ft_tolower.o \
-					ft_toupper.o \
-					ft_isdigit.o \
-					ft_isalpha.o \
-					ft_isalnum.o \
-					ft_isascii.o \
-					ft_isprint.o \
-					ft_isspace.o \
-					ft_strtolower.o \
-					ft_strtoupper.o \
-					ft_strlen.o \
-					ft_strlen_wide.o \
-					ft_strnlen.o \
-					ft_strchr.o \
-					ft_strchr_last.o \
-					ft_strcmp.o \
-					ft_strncmp.o \
-					ft_strstr.o \
-					ft_strnstr.o \
-					ft_strcpy.o \
-					ft_strncpy.o \
-					ft_strdup.o \
-					ft_strcat.o \
-					ft_strncat.o \
-					ft_strlcat.o \
-					ft_memcpy.o \
-					ft_memccpy.o \
-					ft_memmove.o \
-					ft_memcmp.o \
-					ft_memset.o \
-					ft_memchr.o \
-					ft_bzero.o \
-					ft_atoi.o \
-					ft_atoi_add_digit.o \
-					ft_atoi_add_digit_u.o \
-					ft_atoi_add_digit_large.o \
-					ft_atoi_add_digit_ularge.o \
-					ft_memalloc.o \
-					ft_memdel.o \
-					ft_strnew.o \
-					ft_strdel.o \
-					ft_strclr.o \
-					ft_striter.o \
-					ft_striteri.o \
-					ft_strmap.o \
-					ft_strmapi.o \
-					ft_strequ.o \
-					ft_strnequ.o \
-					ft_strsub.o \
-					ft_strjoin.o \
-					ft_strjoinn.o \
-					ft_strtrim.o \
-					ft_strsplit.o \
-					ft_strsplit_free.o \
-					ft_countchars.o \
-					ft_itoa.o \
-					ft_itoa_large.o \
-					ft_itoa_ularge.o \
-					ft_itoa_write.o \
-					ft_basetoa.o \
-					ft_count_digits.o \
-					ft_count_digits_ularge.o \
-					ft_putchar.o \
-					ft_putcharn.o \
-					ft_putcharn_fd.o \
-					ft_putstr.o \
-					ft_putstr_literal_fd.o \
-					ft_putstr_justify_right.o \
-					ft_putstrn.o \
-					ft_putendl_exit.o \
-					ft_putendl.o \
-					ft_putnbr.o \
-					ft_putnbr_justify_right.o \
-					ft_putchar_fd.o \
-					ft_putstr_fd.o \
-					ft_putstrn_fd.o \
-					ft_putendl_fd.o \
-					ft_putnbr_fd.o \
-					ft_putnbr_large_fd.o \
-					ft_putstrarr.o \
-					ft_putarr.o \
-					ft_abs.o \
-					ft_abs_large.o \
-					ft_arrlen.o \
-					ft_list_create_elem.o \
-					ft_list_at.o \
-					ft_list_clear.o \
-					ft_list_find.o \
-					ft_list_find_end.o \
-					ft_list_last.o \
-					ft_list_push_back.o \
-					ft_list_push_front.o \
-					ft_list_push_params.o \
-					ft_list_remove_if.o \
-					ft_list_remove_node.o \
-					ft_list_reverse.o \
-					ft_list_size.o \
-					ft_list_sort.o \
-					ft_list_foreach.o \
-					ft_list_foreach_if.o \
-					ft_min.o \
-					ft_min_umax.o \
-					ft_max.o \
-					ft_ptrswp.o \
-					ft_ptrequ.o \
-					get_next_line.o
+O_FILES	= ft_printf.o
+O_FILES += handle_format.o
+O_FILES += parse_conversion.o
+O_FILES += parse_flags.o
+O_FILES += parse_width.o
+O_FILES += parse_precision.o
+O_FILES += parse_length.o
+O_FILES += parse_specifier.o
+O_FILES += validate_conversion.o
+O_FILES += validate_flags.o
+O_FILES += validate_flags_ignored.o
+O_FILES += print_conversion.o
+O_FILES += print_normal.o
+O_FILES += print_char.o
+O_FILES += print_wide_chars.o
+O_FILES += print_format_error.o
+O_FILES += get_current.o
+O_FILES += get_number_argument.o
+O_FILES += get_unsigned_number_argument.o
+O_FILES += get_string_decimal.o
+O_FILES += get_string_string.o
+O_FILES += get_string_pointer.o
+O_FILES += get_string_octal.o
+O_FILES += get_string_hex.o
+O_FILES += add_final_padding.o
+O_FILES += add_precision_padding.o
 
-PRINTF_COMPILED =	ft_printf.o \
-					handle_format.o \
-					parse_conversion.o \
-					parse_flags.o \
-					parse_width.o \
-					parse_precision.o \
-					parse_length.o \
-					parse_specifier.o \
-					validate_conversion.o \
-					validate_flags.o \
-					validate_flags_ignored.o \
-					print_conversion.o \
-					print_normal.o \
-					print_char.o \
-					print_wide_chars.o \
-					print_format_error.o \
-					get_current.o \
-					get_number_argument.o \
-					get_unsigned_number_argument.o \
-					get_string_decimal.o \
-					get_string_string.o \
-					get_string_pointer.o \
-					get_string_octal.o \
-					get_string_hex.o \
-					add_final_padding.o \
-					add_precision_padding.o
+O_FILES += ft_itoa_ularge.o
+O_FILES += ft_putcharn.o
+O_FILES += ft_utils.o
+O_FILES += ft_basetoa.o
+O_FILES += ft_count_digits.o
+O_FILES += printnum.o
+O_FILES += ft_strtolower.o
 
-COMPILED =			$(FT_COMPILED) $(PRINTF_COMPILED)
+all		: $(NAME)
 
-all: $(NAME)
+$(NAME)	:
+	@make -C libft/ all
+	@$(CC) $(FLAGS) -c $(C_FILES) -I $(INC)
+	@$(ARRC) $(NAME) $(O_FILES) libft/*.o
+	@$(RANLIB) $(NAME)
 
-$(NAME): $(COMPILED)
-	@ar rc $(NAME) $(COMPILED)
-	@ranlib $(NAME)
-	@echo "made" $(NAME)
+clean	:
+	@make -C libft/ clean
+	@/bin/rm -f $(O_FILES)
 
-$(FT_COMPILED): %.o: $(FT_SRC_DIR)/%.c
-	@$(CC) -c $(FLAGS) -I $(FT_SRC_DIR) $< -o $@
+fclean	: clean
+	@make -C libft/ fclean
+	@/bin/rm -f $(NAME)
 
-$(PRINTF_COMPILED): %.o: $(PRINTF_SRC_DIR)/%.c
-	@$(CC) -c $(FLAGS) -I $(FT_SRC_DIR) -I $(PRINTF_SRC_DIR) $< -o $@
-
-clean:
-	@-/bin/rm -f $(COMPILED)
-	@echo "cleaned" $(NAME)
-
-fclean: clean
-	@-/bin/rm -f $(NAME)
-	@echo "fcleaned" $(NAME)
-
-re: fclean all
+re		: fclean all

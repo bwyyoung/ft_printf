@@ -3,22 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 11:52:27 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/10 13:58:48 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strsub(char const *source, size_t start, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char		*substring;
+	char				*strnew;
+	unsigned int		i;
+	unsigned int		j;
 
-	substring = ft_strnew(len);
-	if (!substring)
+	strnew = NULL;
+	if (s == NULL)
 		return (NULL);
-	ft_strncpy(substring, source + (start * sizeof(char)), len);
-	return (substring);
+	if (!(strnew = ft_strnew(len)))
+		return (NULL);
+	i = start;
+	j = 0;
+	while (i < start + len && s[i] != '\0')
+	{
+		strnew[j] = s[i];
+		i++;
+		j++;
+	}
+	return (strnew);
 }

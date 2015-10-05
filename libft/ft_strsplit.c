@@ -3,84 +3,134 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfleming <tfleming@student.42.fr>          +#+  +:+       +#+        */
+/*   By: byoung-w <byoung-w@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 12:12:28 by tfleming          #+#    #+#             */
-/*   Updated: 2014/11/09 19:04:09 by tfleming         ###   ########.fr       */
+/*   Created: 2014/09/03 17:57:08 by byoung-w          #+#    #+#             */
+/*   Updated: 2014/09/14 02:10:59 by sessaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-/*
-** Note: memory leaks possible if malloc breaks: oops!
-*/
-
-static char		*find_word_end(const char *original, char split_on)
+static char		**create2dchararray(char **strings, int *elements, int l1)
 {
-	char	*end;
+	int		i;
 
-	end = ft_strchr(original, split_on);
-	if (end)
-		return (end);
-	return (ft_strchr(original, '\0'));
+	i = 0;
+	if (!(strings = (char **)malloc((l1 + 1) * sizeof(char *))))
+		return (NULL);
+	while (i < l1)
+	{
+		if (!(strings[i] = ft_strnew(elements[i])))
+			return (NULL);
+		i++;
+	}
+	strings[i] = NULL;
+	free(elements);
+	return (strings);
 }
 
-static char		*get_next_word(const char **original, char split_on)
+static char		**populate2darray(char **strings, char const *s, char c, int i)
 {
-	char	*new;
-	size_t	length;
-	size_t	i;
+	int		j;
+	char	lastchar;
 
-	while (**original == split_on)
-		(*original)++;
-	length = find_word_end(*original, split_on) - *original;
-	new = malloc(sizeof(char) * (length + 1));
-	if (!new)
+	j = 0;
+	lastchar = *s;
+	while (*s != '\0')
+	{
+		if (lastchar != c && *s == c)
+		{
+			strings[i][j] = '\0';
+			i++;
+			j = 0;
+		}
+		else if (*s != c)
+		{
+			strings[i][j] = *s;
+			j++;
+		}
+		lastchar = *s;
+		s++;
+	}
+	return (strings);
+}
+
+static void		getlengthsubelements(int *elements,
+char const *s, char c, int i)
+{
+	int		curelement;
+	char	lastchar;
+
+	curelement = 0;
+	lastchar = s[i];
+	if (lastchar != c)
+		elements[curelement]++;
+	while (s[i] != '\0')
+	{
+		if (i > 0)
+		{
+			if (lastchar != c && s[i] == c)
+			{
+				elements[curelement]++;
+				curelement++;
+			}
+			else if (lastchar != c && s[i] != c)
+			{
+				elements[curelement]++;
+			}
+		}
+		lastchar = s[i];
+		i++;
+	}
+}
+
+static int		getnumelements(char const *s, char c)
+{
+	char	lastchar;
+	int		length1;
+	int		i;
+
+	i = 0;
+	length1 = 0;
+	lastchar = s[i];
+	if (lastchar != c && lastchar != '\0')
+		length1++;
+	while (s[i] != '\0')
+	{
+		if (i > 0)
+			if (lastchar == c && s[i] != c)
+				length1++;
+		lastchar = s[i];
+		i++;
+	}
+	return (length1);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	int			*elements;
+	int			l1;
+	int			i;
+	char const	*s2;
+	char		**strings;
+
+	if (!s || !c)
 		return (NULL);
 	i = 0;
-	while (i < length)
+	strings = NULL;
+	s2 = s;
+	l1 = getnumelements(s, c);
+	if (!(elements = (int *)malloc(sizeof(int) * l1)))
+		return (NULL);
+	while (i < l1)
 	{
-		new[i] = (*original)[i];
+		elements[i] = 0;
 		i++;
 	}
-	*original += length + 1;
-	return (new);
-}
-
-static size_t	count_words(const char *original, char split_on)
-{
-	size_t	count;
-
-	while (*original && *original == split_on)
-		original++;
-	count = 0;
-	while (*original)
-	{
-		while (*original && *original != split_on)
-			original++;
-		count++;
-		while (*original && *original == split_on)
-			original++;
-	}
-	return (count);
-}
-
-char			**ft_strsplit(const char *original, char split_on)
-{
-	char	**new;
-	size_t	num;
-	size_t	i;
-
-	num = count_words(original, split_on);
-	new = malloc(sizeof(char*) * (num + 1));
 	i = 0;
-	while (i < num)
-	{
-		new[i] = get_next_word(&original, split_on);
-		i++;
-	}
-	new[i] = NULL;
-	return (new);
+	getlengthsubelements(elements, s, c, i);
+	if (!(strings = create2dchararray(strings, elements, l1)))
+		return (NULL);
+	return (populate2darray(strings, s2, c, i));
 }
